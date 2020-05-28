@@ -1,0 +1,151 @@
+<app-navbar></app-navbar>
+
+
+<!doctype html>
+<html lang="en">
+
+<body>
+
+  <main class="login-form">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header" style="text-align: center;">
+              <div class="col-xs-11 h3">Registrate</div>
+            </div>
+            <div class="card-body">
+              <form action="" name="juego" method="">
+
+                <div class="form-group row">
+                  <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre:</label>
+                  <div class="col-md-6">
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" name="nombre"
+                      style="width:50%" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="apellido" class="col-md-4 col-form-label text-md-right">Apellido:</label>
+                  <div class="col-md-6">
+                    <input type="text" id="apellido" class="form-control" placeholder="Apellido" name="apellido"
+                      style="width:50%" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="email" class="col-md-4 col-form-label text-md-right">Mail:</label>
+                  <div class="col-md-6">
+                    <input type="text" id="email" class="form-control" placeholder="Mail" name="email"
+                      style="width:50%" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="contraseña" class="col-md-4 col-form-label text-md-right">Contraseña:</label>
+                  <div class="col-md-6">
+                    <input type="text" id="contraseña" class="form-control" placeholder="Contraseña" name="contraseña"
+                      style="width:50%" />
+                  </div>
+                </div>
+
+
+                <div class="form-group row">
+
+                  <div class="col-md-6 offset-md-4">
+                    <!-- <div class="col-md-4"> -->
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                      <label class="btn btn-outline-warning">
+                        <input type="radio" name="options" id="option2" autocomplete="off" (click)="tipoUsuario('Profesional')"> Profesional
+                      </label>
+                      <label class="btn btn-outline-primary active">
+                        <input type="radio" name="options" id="option1" autocomplete="off" (click)="tipoUsuario('Paciente')" checked>Paciente
+                      </label>
+                      <label class="btn btn-outline-danger">
+                        <input type="radio" name="options" id="option3" autocomplete="off" (click)="tipoUsuario('Administrador')"> Administrador
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+              <div *ngIf="esProfesional">
+                <app-especialidades-tabla (especialidadAgregar)="recibirParaAgregar($event)"></app-especialidades-tabla>
+              </div>
+
+
+                <div class="form-group row">
+
+                  <div class="col-md-6 offset-md-4">
+                    <h2><button class="btn-success btn-lg">Confirmar</button></h2>
+                    <!-- <h2><button class="btn btn-info btn-lg">Nuevo número secreto</button></h2> -->
+                  </div>
+                </div>
+
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+<h1></h1>
+
+<div class="card-deck">
+  <div class="card text-center">
+    <a href="/Registro/Paciente">
+      <img src="../../../assets/images/pacie.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Alta Paciente</h5>
+      </div>
+    </a>
+  </div>
+    <div class="card text-center">
+      <img src="../../../assets/images/doc.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Alta Profesional</h5>
+      </div>
+    </div>
+    <div class="card text-center">
+      <img src="../../../assets/images/admin.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Alta Administrador</h5>
+      </div>
+    </div>
+  </div>
+
+</div> -->

@@ -1,0 +1,15 @@
+ a > .card-title{
+    font-size: 260%;
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
+.tel{
+    font-size: 200%;
+}
+
+.telefonos{
+    color: grey;
+    font-size: 150%;
+    font-weight: 600;
+}

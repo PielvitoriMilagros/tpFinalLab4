@@ -1,0 +1,10 @@
+.card-title{
+    font-size: 250%;
+    color: rgb(18, 18, 107);
+    margin-bottom: 2%;
+}
+
+.card-text{
+    color: rgb(18, 50, 71);
+    font-size: 110%;
+}

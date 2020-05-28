@@ -1,0 +1,18 @@
+<h5>Especialidades</h5>
+<table class="table table-sm table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col" colspan="2">Descripción</th>
+        <!-- <th scope="col" class="btn btn-outline-warning">Agregar</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let item of listaEspecialidades">
+        <td scope="row">{{item.id}}</td>
+        <td>{{item.data.descripcion}}</td>
+        <td><input type="checkbox" name="" id="" (change)="agregarEspecialidad(item)"></td>
+        <!-- <td class="input" type="checkbox">Agregar</td> -->
+      </tr>
+    </tbody>
+  </table>
