@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { AuthentificationService } from 'src/app/servicios/authentification.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -14,55 +17,45 @@ export class LoginComponent implements OnInit {
   usuario = '';
   clave= '';
   errorLogin=false;
+  loginListo=true;
   progreso: number;
   progresoMensaje="esperando..."; 
-  logeando=true;
+  logueando=false;
   ProgresoDeAncho:string;
+
+  public formLogin: FormGroup;
 
   clase="progress-bar progress-bar-info progress-bar-striped ";
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router) {
+  constructor(private route: ActivatedRoute,private router: Router,private authService: AuthentificationService) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
 
+      this.formLogin = new FormGroup({
+        email: new FormControl(null, Validators.email),
+        password: new FormControl(null, [Validators.required, Validators.minLength(6)])
+      })
+
   }
+
+  confirmarLogin(){
+
+    this.logueando=true;
+    this.authService.iniciarSesion(this.formLogin.value.email, this.formLogin.value.password).then(resp => {
+
+      this.router.navigate(['/Principal']);
+
+    }).catch(error =>{
+      this.loginListo=false;
+      this.errorLogin=true;
+    });
+
+
+  }
+
+
 
   ngOnInit() {
-  }
-
-  Entrar() {
-    // let jugadores = this.miServicio.obtenerJugadores();
-    // let flag=false;
-    let flag=true;
-
-    // for(let jugador of jugadores){
-    //   if(this.usuario == jugador.usuario && this.clave==jugador.clave){
-    //     flag=true;
-    //     this.miServicio.activarJugador(jugador);
-    //     this.router.navigate(['/Principal']);
-    //   }
-    // }
-    if(flag)
-    this.errorLogin=false;
-    else
-    this.errorLogin=true;
-    // if (this.usuario === 'admin' && this.clave === 'admin') {
-    //   this.router.navigate(['/Principal']);
-    // }
-  }
-
-
-
-  MoverBarraDeProgreso() {
-    
-    this.logeando=false;
-    this.clase="progress-bar progress-bar-danger progress-bar-striped active";
-
-          this.subscription.unsubscribe();
-          this.Entrar();
-    //this.logeando=true;
   }
 
 }

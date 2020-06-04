@@ -3,7 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+//
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,12 +16,10 @@ import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { QuienesSomosComponent } from './componentes/quienes-somos/quienes-somos.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
-import { RegistroPacienteComponent } from './componentes/registro-paciente/registro-paciente.component';
-import { RegistroProfesionalComponent } from './componentes/registro-profesional/registro-profesional.component';
-import { RegistroAdministradorComponent } from './componentes/registro-administrador/registro-administrador.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { EspecialidadesTablaComponent } from './componentes/especialidades-tabla/especialidades-tabla.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SubirImagenComponent } from './componentes/subir-imagen/subir-imagen.component';
 
 @NgModule({
   declarations: [
@@ -27,18 +29,20 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     QuienesSomosComponent,
     RegistroComponent,
-    RegistroPacienteComponent,
-    RegistroProfesionalComponent,
-    RegistroAdministradorComponent,
     LoginComponent,
-    EspecialidadesTablaComponent
+    EspecialidadesTablaComponent,
+    SubirImagenComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,8 +11,9 @@ export const environment = {
     projectId: "tpfinal-70136",
     storageBucket: "tpfinal-70136.appspot.com",
     messagingSenderId: "1095281628749",
-    appId: "1:1095281628749:web:5ee8847f9840686ca9ae04"
-  }
+    appId: "1:1095281628749:web:5ee8847f9840686ca9ae04",
+  },
+  urlVerify:"http://localhost:4200"
 };
 
 /*

@@ -1,0 +1,58 @@
+      <!-- SUBIR DIRECTAMENTE DESDE ACÁ -->
+    <!-- <div class="contenedor">
+        <div class="contenedor_formulario">
+          <form [formGroup]="archivoForm" (submit)="subirArchivo()">
+            <div class="file has-name is-boxed">
+                <img *ngIf="imgURL" [src]="imgURL" alt="">
+              <label class="file-label">
+                <input class="file-input" type="file" #file formControlName="archivo" (change)="preview(file.files)" (change)="cambioArchivo($event)">
+              </label>
+            </div>
+            <hr>
+            <button class="btn btn-warning" type="submit" [ngClass]="{'button': true, 'is-success': true, 'is-large': true}" [disabled]="!archivoForm.valid">Subir archivo</button>
+          </form>
+        </div>
+    </div> -->
+
+    <!-- ENVIAR PARA OTRO COMPONENTE -->
+      <div class="contenedor">
+      
+        <div class="contenedor_formulario">
+          <form [formGroup]="archivoForm">
+            <div class="file has-name is-boxed">
+              <img *ngIf="imgURL" [src]="imgURL" alt="" style="height: 250px; width: 100%; display: block;">
+              <label class="file-label">
+                <input class="file-input" type="file" #file formControlName="archivo" (change)="preview(file.files)"
+                  (change)="cambioArchivo($event)">
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+
+      <!-- <div class="container">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-6 box-shadow">
+              <form [formGroup]="archivoForm" (submit)="enviarImagen()">
+                <div class="file has-name is-boxed">
+
+              <img *ngIf="imgURL" [src]="imgURL" alt="" class="card-img-top" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+              <img *ngIf="!imgURL" class="card-img-top" style="height: 225px; width: 100%; display: block;" src="../../../assets/images/noImage.jpg" data-holder-rendered="true">
+              <div class="card-body">
+                <label class="file-label">
+                  <input class="file-input" type="file" #file formControlName="archivo" (change)="preview(file.files)" (change)="cambioArchivo($event)">
+                </label>
+              </div>
+
+              </div>
+
+            </form>
+            </div>
+          </div>
+
+        </div>
+      </div> -->

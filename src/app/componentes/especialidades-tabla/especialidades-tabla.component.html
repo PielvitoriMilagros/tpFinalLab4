@@ -2,17 +2,31 @@
 <table class="table table-sm table-bordered">
     <thead>
       <tr>
-        <th scope="col">Código</th>
         <th scope="col" colspan="2">Descripción</th>
         <!-- <th scope="col" class="btn btn-outline-warning">Agregar</th> -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor = "let item of listaEspecialidades">
-        <td scope="row">{{item.id}}</td>
-        <td>{{item.data.descripcion}}</td>
-        <td><input type="checkbox" name="" id="" (change)="agregarEspecialidad(item)"></td>
-        <!-- <td class="input" type="checkbox">Agregar</td> -->
+        <td>{{item.descripcion}}</td>
+        <td><input type="checkbox" name="" id="" (click)="agregarEspecialidad(item)"></td>
       </tr>
     </tbody>
   </table>
+
+  <div class="card">
+    <h5 class="card-header">Nueva especialidad</h5>
+    <div class="card-body">
+      <form [formGroup]="formEspecialidad">
+      <div class="card-text">
+        <div class="row">
+        <div class="col-md-6">
+          <input formControlName="especialidadNueva" type="text" id="especialidadNueva" class="form-control" placeholder="Ej: Clínica Médica" name="especialidadNueva"
+            style="width:70%" />
+          </div>
+          <a class="btn btn-primary" (click)="crearNuevaEspecialidad()">Agregar</a>
+      </div>
+    </div>
+  </form>
+    </div>
+  </div>

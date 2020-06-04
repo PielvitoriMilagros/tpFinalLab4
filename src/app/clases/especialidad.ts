@@ -1,9 +1,9 @@
 export class Especialidad {
 
-    id:number;
+    id:string;
     descripcion:string;
 
-    constructor(id:number,descripcion:string){
+    constructor(descripcion:string,id?:string){
         this.id=id;
         this.descripcion=descripcion;
     }

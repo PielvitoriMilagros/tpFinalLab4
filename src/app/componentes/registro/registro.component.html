@@ -10,42 +10,53 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <div class="card">
+          <div [hidden]="registrado" class="card">
             <div class="card-header" style="text-align: center;">
               <div class="col-xs-11 h3">Registrate</div>
             </div>
             <div class="card-body">
-              <form action="" name="juego" method="">
+
+              <form [formGroup]="formRegistro">
+
+
 
                 <div class="form-group row">
                   <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre:</label>
                   <div class="col-md-6">
-                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" name="nombre"
-                      style="width:50%" />
+                    <input formControlName="nombre" type="text" id="nombre" class="form-control" placeholder="Nombre"
+                      name="nombre" style="width:50%" />
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="apellido" class="col-md-4 col-form-label text-md-right">Apellido:</label>
                   <div class="col-md-6">
-                    <input type="text" id="apellido" class="form-control" placeholder="Apellido" name="apellido"
-                      style="width:50%" />
+                    <input formControlName="apellido" type="text" id="apellido" class="form-control"
+                      placeholder="Apellido" name="apellido" style="width:50%" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="nacimiento" class="col-md-4 col-form-label text-md-right">Nacimiento:</label>
+                  <div class="col-md-6">
+                    <input formControlName="nacimiento" type="date" id="nacimiento" class="form-control"
+                      placeholder="Nacimiento" name="nacimiento" style="width:50%" />
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="email" class="col-md-4 col-form-label text-md-right">Mail:</label>
                   <div class="col-md-6">
-                    <input type="text" id="email" class="form-control" placeholder="Mail" name="email"
-                      style="width:50%" />
+                    <input formControlName="email" type="text" id="email" class="form-control" placeholder="Mail"
+                      name="email" style="width:50%" />
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="contraseña" class="col-md-4 col-form-label text-md-right">Contraseña:</label>
                   <div class="col-md-6">
-                    <input type="text" id="contraseña" class="form-control" placeholder="Contraseña" name="contraseña"
-                      style="width:50%" />
+                    <input formControlName="password" type="text" id="contraseña" class="form-control"
+                      placeholder="Contraseña" name="contraseña" style="width:50%" />
                   </div>
                 </div>
 
@@ -56,36 +67,87 @@
                     <!-- <div class="col-md-4"> -->
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                       <label class="btn btn-outline-warning">
-                        <input type="radio" name="options" id="option2" autocomplete="off" (click)="tipoUsuario('Profesional')"> Profesional
+                        <input type="radio" name="options" id="option2" autocomplete="off"
+                          (click)="tipoUsuario('Profesional')" value="2"> Profesional
                       </label>
                       <label class="btn btn-outline-primary active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" (click)="tipoUsuario('Paciente')" checked>Paciente
+                        <input type="radio" name="options" id="option1" autocomplete="off"
+                          (click)="tipoUsuario('Paciente')" value="1" checked>Paciente
                       </label>
                       <label class="btn btn-outline-danger">
-                        <input type="radio" name="options" id="option3" autocomplete="off" (click)="tipoUsuario('Administrador')"> Administrador
+                        <input type="radio" name="options" id="option3" autocomplete="off"
+                          (click)="tipoUsuario('Administrador')" value="3"> Administrador
                       </label>
                     </div>
                   </div>
                 </div>
 
-              <div *ngIf="esProfesional">
-                <app-especialidades-tabla (especialidadAgregar)="recibirParaAgregar($event)"></app-especialidades-tabla>
-              </div>
+                <div *ngIf="esProfesional">
+                  <app-especialidades-tabla (especialidadAgregar)="recibirParaAgregar($event)">
+                  </app-especialidades-tabla>
+                </div>
 
+                <h5>Imágenes</h5>
+                <div class="row">
+                  <div class="col-md-6">
+                    <app-subir-imagen (detalleImagen)="imagenASubirUno($event)"></app-subir-imagen>
+                  </div>
+                  <div class="col-md-6">
+                    <app-subir-imagen (detalleImagen)="imagenASubirDos($event)"></app-subir-imagen>
+                  </div>
+                </div>
+
+                <!-- 
+              <p>{{formRegistro.value|json}}</p>
+              <p>{{formRegistro.valid}}</p>-->
 
                 <div class="form-group row">
 
-                  <div class="col-md-6 offset-md-4">
-                    <h2><button class="btn-success btn-lg">Confirmar</button></h2>
-                    <!-- <h2><button class="btn btn-info btn-lg">Nuevo número secreto</button></h2> -->
+                  <div [hidden]="registrando" class="col-md-6 offset-md-4">
+                    <h2><button class="btn-success btn-lg" (click)="confirmarRegistro()">Registrarme</button></h2>
+                  </div>
+
+                  <div *ngIf="registrando" class="col-md-6 offset-md-4">
+                    <button class="btn btn-success btn-lg" type="button" disabled>
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      Cargando...
+                    </button>
                   </div>
                 </div>
 
 
-
               </form>
+
+
+
+
+
+            </div>
+            
+            
+            
+          </div>
+
+
+
+
+          <div *ngIf="registrado" class="card mb-3" style="max-width: 640px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="../../../assets/images/okey.png" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="card-text">Registro completo!</h4>
+                  <a href="./Principal" class="btn btn-outline-danger btn-sm">Volver</a>
+                </div>
+              </div>
             </div>
           </div>
+
+
+
+
         </div>
       </div>
     </div>
@@ -96,56 +158,3 @@
 
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="container">
-<h1></h1>
-
-<div class="card-deck">
-  <div class="card text-center">
-    <a href="/Registro/Paciente">
-      <img src="../../../assets/images/pacie.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Alta Paciente</h5>
-      </div>
-    </a>
-  </div>
-    <div class="card text-center">
-      <img src="../../../assets/images/doc.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Alta Profesional</h5>
-      </div>
-    </div>
-    <div class="card text-center">
-      <img src="../../../assets/images/admin.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Alta Administrador</h5>
-      </div>
-    </div>
-  </div>
-
-</div> -->

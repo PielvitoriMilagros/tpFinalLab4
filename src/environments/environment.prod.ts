@@ -8,5 +8,6 @@ export const environment = {
     storageBucket: "tpfinal-70136.appspot.com",
     messagingSenderId: "1095281628749",
     appId: "1:1095281628749:web:5ee8847f9840686ca9ae04"
-  }
+  },
+  urlVerify:"https://tpfinal-70136.web.app/"
 };

@@ -1,84 +1,104 @@
 <app-navbar></app-navbar>
 
-<!-- <head>
-    
-    
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-</head> -->
 
 <body>
-    
-    <div class="container">
+
+    <div *ngIf="loginListo" class="container">
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="panel-title">Ingreso a mi cuenta</div>
-                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">¿Olvidó la contraseña?</a>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Ingreso a mi cuenta</div>
+                    <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">¿Olvidó la
+                            contraseña?</a>
+                    </div>
                 </div>
-            </div>
 
-            <div style="padding-top:30px" class="panel-body">
+                <div style="padding-top:30px" class="panel-body">
 
-                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
-                <form id="loginform" class="form-horizontal" role="form">
+                    <form [formGroup]="formLogin" id="loginform" class="form-horizontal" role="form">
 
-                    <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" value=""
-                        placeholder="username or email">
-                    </div>
-
-                    <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password"
-                            placeholder="password">
-                    </div>
-                    
-
-
-                    <div class="input-group">
-                        <div class="checkbox">
-                            <label>
-                                <input id="login-remember" type="checkbox" name="remember" value="1"> Recordar mis datos
-                            </label>
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input formControlName="email" id="login-username" type="text" class="form-control"
+                                name="username" value="" placeholder="email">
                         </div>
-                    </div>
-                    
 
-                    <div style="margin-top:10px" class="form-group">
-                        <!-- Button -->
-
-                        <div class="col-sm-12 controls">
-                            <a id="btn-login" href="#" class="btn btn-success">Ingresar </a>
-                            <a id="btn-cancel" href="#" class="btn btn-primary">Cancelar</a>
-
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input formControlName="password" id="login-password" type="password" class="form-control"
+                                name="password" placeholder="contraseña">
                         </div>
-                    </div>
 
-                    
-                    <div class="form-group">
-                        <div class="col-md-12 control">
-                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
-                                ¿No tenés cuenta?
-                                <a href="/Registro">Registrate!</a>
-                                <!-- <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                    Registrate!
-                                </a> -->
+
+
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input id="login-remember" type="checkbox" name="remember" value="1"> Recordar mis
+                                    datos
+                                </label>
                             </div>
                         </div>
-                    </div>
-                </form>
 
 
-                
+                        <div style="margin-top:10px" class="form-group">
+                            <!-- Button -->
+
+                            <div [hidden]="logueando" class="col-sm-12 controls">
+                                <a id="btn-login" (click)="confirmarLogin()" class="btn btn-success">Ingresar </a>
+                                <a id="btn-cancel" href="#" class="btn btn-primary">Cancelar</a>
+                            </div>
+
+                            <div *ngIf="logueando" class="col-sm-12 controls">
+                                <button class="btn btn-success btn-lg" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Cargando...
+                                  </button>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-12 control">
+                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                    ¿No tenés cuenta?
+                                    <a href="/Registro">Registrate!</a>
+                                    <!-- <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                    Registrate!
+                                </a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+                </div>
             </div>
         </div>
+
     </div>
-    
-</div>
+
+
+          <div *ngIf="errorLogin" class="card mb-3" style="max-width: 640px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="../../../assets/images/error.png" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="card-text">Error en el Login!</h4>
+                  <a href="./Principal" class="btn btn-outline-danger btn-sm">Volver</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
 </body>
