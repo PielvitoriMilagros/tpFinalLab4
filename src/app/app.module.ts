@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 //
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -20,6 +22,13 @@ import { LoginComponent } from './componentes/login/login.component';
 import { EspecialidadesTablaComponent } from './componentes/especialidades-tabla/especialidades-tabla.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SubirImagenComponent } from './componentes/subir-imagen/subir-imagen.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { MenuProfesionalComponent } from './componentes/menu-profesional/menu-profesional.component';
+import { MenuPacienteComponent } from './componentes/menu-paciente/menu-paciente.component';
+import { MenuAdministradorComponent } from './componentes/menu-administrador/menu-administrador.component';
+import { ListadoProfesionalComponent } from './componentes/listado-profesional/listado-profesional.component';
+import { TurnosSolicitudComponent } from './componentes/turnos-solicitud/turnos-solicitud.component';
+import { DiasQueAtiendeComponent } from './componentes/dias-que-atiende/dias-que-atiende.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +40,14 @@ import { SubirImagenComponent } from './componentes/subir-imagen/subir-imagen.co
     RegistroComponent,
     LoginComponent,
     EspecialidadesTablaComponent,
-    SubirImagenComponent
+    SubirImagenComponent,
+    PerfilComponent,
+    MenuProfesionalComponent,
+    MenuPacienteComponent,
+    MenuAdministradorComponent,
+    ListadoProfesionalComponent,
+    TurnosSolicitudComponent,
+    DiasQueAtiendeComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +58,8 @@ import { SubirImagenComponent } from './componentes/subir-imagen/subir-imagen.co
     AngularFireStorageModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

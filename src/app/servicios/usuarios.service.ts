@@ -34,18 +34,90 @@ export class UsuariosService {
     return this.listaUsuarios;
   }
 
+  getUsuarioByEmail(email:string){
+    // Antes de devolver la info a la que me suscribo, paso por el map
+    return this.http.get(environment.firebaseConfig.databaseURL+"/usuarios.json").pipe(map(resp=>{
+      return this.filtrarPorMail(resp,email)}));
+  }
+
+  getUsuarioByTipo(tipo:string){
+    return this.http.get(environment.firebaseConfig.databaseURL+"/usuarios.json").pipe(map(resp=>{
+      return this.filtrarPorTipo(resp,tipo)}));
+  }
+
+  getUsuarioById(id:string){
+    return this.http.get(environment.firebaseConfig.databaseURL+"/usuarios.json").pipe(map(resp=>{
+      return this.filtrarPorId(resp,id)}));
+  }
+
+
+//  this.http.patch('mi host/pedidos/id.json, {estado:'nuevo estado'} )
+//  public aceptarTurno( idTurno:string){
+//     return this.httpClient.patch(`${environment.hostFirebase}/turnos/${idTurno}.json`,{estado:"APROBADO"});
+//   }
+
+  cambiarEstadoProfesional(id:string,estad:boolean){
+    return this.http.patch(environment.firebaseConfig.databaseURL+"/usuarios/"+id+".json",{estado:estad}).subscribe(resp=>{
+    });
+    
+ }
+
+
+
+
+
+
+  filtrarPorMail(res:any,email:string){
+    let usuarios;
+    let aux=null;
+    usuarios=this.objecToArray(res);
+      for (let index = 0; index < usuarios.length; index++) {
+        const element = usuarios[index];
+        if (element.email == email) {
+          aux = element;
+        }
+      }
+      return aux;
+  }
+
+  filtrarPorId(res:any,id:string){
+    let usuarios;
+    let aux=null;
+    usuarios=this.objecToArray(res);
+      for (let index = 0; index < usuarios.length; index++) {
+        const element = usuarios[index];
+        if (element.id == id) {
+          aux = element;
+        }
+      }
+      return aux;
+  }
+
+  filtrarPorTipo(res:any,tipo:string){
+    let usuarios;
+    let aux=[];
+    usuarios=this.objecToArray(res);
+      for (let index = 0; index < usuarios.length; index++) {
+        const element = usuarios[index];
+        if (element.tipoDeUsuario == tipo) {
+          aux.push(element);
+        }
+      }
+      return aux;
+  }
+
 
   private objecToArray( datos: Object ){
-    const mesas = [];
+    const users = [];
     if(datos == null) return [];
 
     Object.keys( datos ).forEach( key =>{
-          let mesa: any = datos[key];
-          // mesa.id=key;
-          mesas.push(mesa);
+          let user: any = datos[key];
+          user.id=key;
+          users.push(user);
         
     })
-    return mesas;
+    return users;
   }
 
 }

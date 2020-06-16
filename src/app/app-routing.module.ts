@@ -3,14 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { ListadoProfesionalComponent } from './componentes/listado-profesional/listado-profesional.component';
+import { TurnosSolicitudComponent } from './componentes/turnos-solicitud/turnos-solicitud.component';
 
 
 const routes: Routes = [
-  {path:'home',component:HomeComponent},
-  {path:'Registro',component:RegistroComponent},
-  {path:'Login',component:LoginComponent},
-  {path:'',component:HomeComponent},
+  {path:'home',component:HomeComponent,data:{animation: 'home'}},
+  {path:'Registro',component:RegistroComponent,data:{animation: 'Registro'}},
+  {path:'Login',component:LoginComponent,data:{animation: 'Login'}},
+  {path:'MiPerfil',component:PerfilComponent},
+  {path:'Listados/Profesionales',component:ListadoProfesionalComponent},
+  {path:'Turnos/Solicitud',component:TurnosSolicitudComponent},
   {path:'**', pathMatch:'full' ,redirectTo:'home'},
+  
   // {path: 'Registro' ,
   // component: RegistroComponent ,
   // children:

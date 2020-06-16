@@ -1,0 +1,101 @@
+<app-navbar></app-navbar>
+
+
+<!doctype html>
+<html lang="en">
+
+<body>
+
+    <main class="login-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header" style="text-align: center;">
+                            <div class="col-xs-11 h3">Solicitud de turnos</div>
+                        </div>
+                        <div class="card-body">
+
+                            <form [formGroup]="formTurno">
+
+                                <div class="form-group row">
+                                    <label for="apellido" class="col-md-4 col-form-label text-md-right">Filtrar
+                                        por:</label>
+                                    <div class="col-md-6">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-light"
+                                                (click)="activar('Especialidad')">Especialidad</button>
+                                            <button type="button" class="btn btn-light"
+                                                (click)="activar('Dia')">Día</button>
+                                            <button type="button" class="btn btn-light"
+                                                (click)="activar('Profesional')">Profesional</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" *ngIf="especialidad">
+                                    <label for="especialidad"
+                                        class="col-md-4 col-form-label text-md-right">Especialidades: </label>
+                                    <div class="col-md-6">
+                                        <select class="selectpicker" required id="especialidad" (change)="cambiaEspecialidad($event)">
+                                            <option [value]=item *ngFor="let item of listaEspecialidades; let i=index">
+                                                {{item.descripcion}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row" *ngIf="dia">
+                                    <label for="especialidad" class="col-md-4 col-form-label text-md-right">Dias:
+                                    </label>
+                                    <div class="col-md-6">
+
+                                        <select class="selectpicker" required id="dias" (change)="cambiaDia($event)"> 
+                                            <option [value]=item *ngFor="let item of listaDias; let i=index">{{item}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row" *ngIf="profesional">
+                                    <label for="especialidad"
+                                        class="col-md-4 col-form-label text-md-right">Profesionales: </label>
+                                    <div class="col-md-6">
+
+                                        <select class="selectpicker" required id="profesionales">
+                                            <option [value]=item *ngFor="let item of listaProfesionales; let i=index">
+                                                {{item.apellido}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+
+                                    <div class="col-md-6 offset-md-4">
+                                        <h2><button class="btn-success btn-sm">Buscar</button></h2>
+                                    </div>
+
+                                </div>
+
+
+                            </form>
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -3,7 +3,9 @@
 
 <!doctype html>
 <html lang="en">
-
+<head>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
 <body>
 
   <main class="login-form">
@@ -61,8 +63,7 @@
                 </div>
 
 
-                <div class="form-group row">
-
+                <div [hidden]="adminActivo" class="form-group row">
                   <div class="col-md-6 offset-md-4">
                     <!-- <div class="col-md-4"> -->
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -74,6 +75,15 @@
                         <input type="radio" name="options" id="option1" autocomplete="off"
                           (click)="tipoUsuario('Paciente')" value="1" checked>Paciente
                       </label>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div *ngIf="adminActivo">
+                  <div class="col-md-6 offset-md-4">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
                       <label class="btn btn-outline-danger">
                         <input type="radio" name="options" id="option3" autocomplete="off"
                           (click)="tipoUsuario('Administrador')" value="3"> Administrador
@@ -85,6 +95,9 @@
                 <div *ngIf="esProfesional">
                   <app-especialidades-tabla (especialidadAgregar)="recibirParaAgregar($event)">
                   </app-especialidades-tabla>
+                  <!-- DIAS QUE ATIENDE -->
+                  <app-dias-que-atiende (diaParaAgregar)="recibirDias($event)"></app-dias-que-atiende>
+
                 </div>
 
                 <h5>Imágenes</h5>
@@ -100,6 +113,11 @@
                 <!-- 
               <p>{{formRegistro.value|json}}</p>
               <p>{{formRegistro.valid}}</p>-->
+
+
+<!-- CAPTCHA GOOGLE -->
+              <div class="g-recaptcha" data-sitekey="6Lc4WaUZAAAAAIIAlqD0ChmdMPFlaoMWT6UqvIQs"></div>
+
 
                 <div class="form-group row">
 
@@ -123,9 +141,9 @@
 
 
             </div>
-            
-            
-            
+
+
+
           </div>
 
 
@@ -139,6 +157,7 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h4 class="card-text">Registro completo!</h4>
+                  <h6 class="card-text">Te enviamos un mail. Verifica tu cuenta antes de comenzar a navegar.</h6>
                   <a href="./Principal" class="btn btn-outline-danger btn-sm">Volver</a>
                 </div>
               </div>
@@ -157,4 +176,3 @@
 </body>
 
 </html>
-

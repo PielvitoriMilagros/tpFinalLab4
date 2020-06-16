@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+
+<div *ngIf="usuario" class="container" style="margin-top: 2%;">
+    <div class="card">
+        <div class="card-header text-center">
+            <h2>{{usuario.nombre}} {{usuario.apellido}}</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div *ngIf="estadoMail==false">
+    
+    
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="../../../assets/images/error.png" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Todavía falta verificar tu email!</h5>
+                                    <p class="card-text">Recordá que te enviamos un email para que puedas verificar tu
+                                        cuenta. Hasta que no lo hagas, no vas a poder navegar por nuestro sitio y aprovechar
+                                        de todas sus características.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="estadoMail==true" class="imagenes row">
+                    <img *ngIf="imagenUno" [src]="imagenUno" alt=""
+                        style="height: 250px; width: 250px; display: block;">
+                    <img *ngIf="imagenDos" [src]="imagenDos" alt=""
+                        style="height: 250px; width: 250px; display: block;">
+                    </div>
+            </div>
+            
+            <div *ngIf="estadoMail==true">
+
+                <h5 class="card-title text-center">{{usuario.tipoDeUsuario}}: {{usuario.email}}</h5>
+
+                <div *ngIf="esAdmin">
+                    <app-menu-administrador></app-menu-administrador>
+                </div>
+                <div *ngIf="esProfesional">
+                    <app-menu-profesional [usuarioActual]="this.usuario"></app-menu-profesional>
+                </div>
+                <div *ngIf="esPaciente">
+                    <app-menu-paciente [usuarioActual]="this.usuario"></app-menu-paciente>
+                </div>
+            </div>
+
+
+
+
+
+            <p class="card-text">text</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+    </div>
+
+</div>

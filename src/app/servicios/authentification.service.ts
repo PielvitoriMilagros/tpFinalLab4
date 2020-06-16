@@ -15,16 +15,32 @@ export class AuthentificationService {
 
 
    registrarCuenta(email:string,pass:string){
-
     return this.auth.createUserWithEmailAndPassword(email,pass);
-
    }
 
    iniciarSesion(email:string,pass:string){
      return this.auth.signInWithEmailAndPassword(email,pass);
    }
 
-   
+   cerrarSesion(){
+     return this.auth.signOut();
+   }
+
+   currentUser(){
+     return this.auth.currentUser;
+   }
+
+
+
+   public logueado(){
+    return this.auth.currentUser.then(resp=>{
+      if(resp)
+        return true;
+      else
+        return false;
+      
+    });
+  }
 
 
 

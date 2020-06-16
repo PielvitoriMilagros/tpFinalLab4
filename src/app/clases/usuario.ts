@@ -12,10 +12,12 @@ export class Usuario {
 	imagenDos:string;
 	tipoDeUsuario:string;
 	especialidades:Especialidad[];
+    dias:string[];
     estado:boolean;
+
     
 
-    constructor(nombre:string,apellido:string,nacimiento:Date,email:string,password:string,imagenUno:string,imagenDos:string,tipoDeUsuario:string,especialidades?:Especialidad[],estado?:boolean,id?:string){
+    constructor(nombre:string,apellido:string,nacimiento:Date,email:string,password:string,imagenUno:string,imagenDos:string,tipoDeUsuario:string,especialidades?:Especialidad[],estado?:boolean,dias?:string[],id?:string){
         this.id=id;
         this.nombre=nombre;
         this.apellido=apellido;
@@ -25,8 +27,9 @@ export class Usuario {
         this.imagenUno=imagenUno;
         this.imagenDos=imagenDos;
         this.tipoDeUsuario = tipoDeUsuario;
-        this.especialidades = especialidades;
-        this.estado = estado;
+        if(especialidades) this.especialidades = especialidades;
+        if(estado) this.estado = estado;
+        if(dias) this.dias = dias;
 
     }
 

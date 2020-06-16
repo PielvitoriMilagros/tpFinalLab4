@@ -1,0 +1,47 @@
+<div class="container" style="align-items: center; justify-items: center;">
+    <div class="card-body">
+        <div class="row">
+            <div [hidden]="usuarioActual.estado">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="../../../assets/images/error.png" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Todavía falta verificar tu cuenta de usuario!</h5>
+                                <p class="card-text">Recordá que es necesario que te contactes con un administrador para
+                                    que
+                                    active tu cuenta y puedas empezar a anteder.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div *ngIf="usuarioActual.estado" class="row">
+    <div class="col-sm-6">
+        <div class="card bg-info">
+            <div class="card-body">
+                <h5 class="card-title text-white">Ver Profesionales</h5>
+                <p class="card-text">Desde este menu podrá acceder al listado de profesionales para darlos de alta.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card bg-info">
+            <div class="card-body">
+                <h5 class="card-title text-white">Registrar Administrador</h5>
+                <p class="card-text">Desde este menu podrá redirigirse al registro para dar de alta un nuevo
+                    administrador.</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>

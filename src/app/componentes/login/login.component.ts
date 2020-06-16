@@ -43,7 +43,12 @@ export class LoginComponent implements OnInit {
     this.logueando=true;
     this.authService.iniciarSesion(this.formLogin.value.email, this.formLogin.value.password).then(resp => {
 
-      this.router.navigate(['/Principal']);
+      this.authService.currentUser().then(resp=>{
+        console.log(resp);
+      })
+
+
+      this.router.navigate(['/home']);
 
     }).catch(error =>{
       this.loginListo=false;

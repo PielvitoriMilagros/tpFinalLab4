@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+
+<h2>Profesionales</h2>
+<table class="table" [hidden]="modificado">
+    <thead>
+        <tr>
+            <th scope="col">Foto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Especialidades</th>
+            <th scope="col">Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listado">
+            <td>
+                <img height=80px width="80" [src]="item.imagenUno" alt="">
+            </td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.apellido}}</td>
+            <td>
+                <div *ngFor="let espe of item.especialidades">
+                    <p>{{espe.descripcion}}</p>
+                </div>
+            </td>
+
+            <div *ngIf="item.estado==false">
+                <td>Inactivo</td>
+                <td>
+                    <button class="btn btn-outline-warning btn-sm" name="" id="" (click)="activarProfesional(item)">Activar</button>
+                </td>
+            </div>
+
+            <div *ngIf="item.estado==true">
+                <td>Activo</td>
+                <td>
+                    <button class="btn btn-outline-danger btn-sm" (click)="desactivarProfesional(item)">Desactivar</button>
+                </td>
+            </div>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+<div *ngIf="modificado" class="card mb-3" style="max-width: 640px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="../../../assets/images/okey.png" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h4 class="card-text">Profesional modificado!</h4>
+                <h6 class="card-text">El profesional seleccionado fue modificado correctamente.</h6>
+                <a href="./Listados/Profesionales" class="btn btn-outline-danger btn-sm">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
