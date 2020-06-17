@@ -6,6 +6,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { ListadoProfesionalComponent } from './componentes/listado-profesional/listado-profesional.component';
 import { TurnosSolicitudComponent } from './componentes/turnos-solicitud/turnos-solicitud.component';
+import { ListadoTurnoComponent } from './componentes/listado-turno/listado-turno.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'Login',component:LoginComponent,data:{animation: 'Login'}},
   {path:'MiPerfil',component:PerfilComponent},
   {path:'Listados/Profesionales',component:ListadoProfesionalComponent},
+  {path:'Listados/Turnos',component:ListadoTurnoComponent},
   {path:'Turnos/Solicitud',component:TurnosSolicitudComponent},
   {path:'**', pathMatch:'full' ,redirectTo:'home'},
   

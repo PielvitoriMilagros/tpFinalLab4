@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
+import { AuthentificationService } from 'src/app/servicios/authentification.service';
+import { Usuario } from 'src/app/clases/usuario';
 
 @Component({
   selector: 'app-listado-profesional',
@@ -11,12 +13,31 @@ export class ListadoProfesionalComponent implements OnInit {
   listado;
   especialidadProfesional;
   modificado=false;
+  usuarioActualAdmin=false;
 
-  constructor(private userServ:UsuariosService) { }
+  constructor(private userServ:UsuariosService,private authService:AuthentificationService) { }
 
   ngOnInit(): void {
 
     this.cargarUsuarios();
+
+    this.authService.currentUser().then(resp=>{
+
+      let aux = resp;
+
+       this.userServ.getUsuarioByEmail(aux.email).subscribe(res =>{
+         
+         let usuario=res;
+
+         if(usuario.tipoDeUsuario == 'Administrador')
+         this.usuarioActualAdmin=true;
+
+
+       })
+
+    });
+
+
 
   }
 
@@ -44,8 +65,6 @@ export class ListadoProfesionalComponent implements OnInit {
     this.modificado=true;
 
   }
-
-
 
 
 

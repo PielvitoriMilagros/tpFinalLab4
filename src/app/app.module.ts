@@ -11,6 +11,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { RecaptchaModule } from 'angular-google-recaptcha';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -29,6 +31,11 @@ import { MenuAdministradorComponent } from './componentes/menu-administrador/men
 import { ListadoProfesionalComponent } from './componentes/listado-profesional/listado-profesional.component';
 import { TurnosSolicitudComponent } from './componentes/turnos-solicitud/turnos-solicitud.component';
 import { DiasQueAtiendeComponent } from './componentes/dias-que-atiende/dias-que-atiende.component';
+import { TurnosTablaComponent } from './componentes/turnos-tabla/turnos-tabla.component';
+import { TablaProfesionalComponent } from './componentes/tabla-profesional/tabla-profesional.component';
+import { ListadoTurnoComponent } from './componentes/listado-turno/listado-turno.component';
+import { ListadoTurnoPacienteComponent } from './componentes/listado-turno-paciente/listado-turno-paciente.component';
+import { ListadoTurnoProfesionalComponent } from './componentes/listado-turno-profesional/listado-turno-profesional.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +54,12 @@ import { DiasQueAtiendeComponent } from './componentes/dias-que-atiende/dias-que
     MenuAdministradorComponent,
     ListadoProfesionalComponent,
     TurnosSolicitudComponent,
-    DiasQueAtiendeComponent
+    DiasQueAtiendeComponent,
+    TurnosTablaComponent,
+    TablaProfesionalComponent,
+    ListadoTurnoComponent,
+    ListadoTurnoPacienteComponent,
+    ListadoTurnoProfesionalComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +71,10 @@ import { DiasQueAtiendeComponent } from './componentes/dias-que-atiende/dias-que
     ReactiveFormsModule,
     FormsModule,
     AngularFireAuthModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RecaptchaModule.forRoot({
+      siteKey: '6Lc4WaUZAAAAAIIAlqD0ChmdMPFlaoMWT6UqvIQs',
+  }),
   ],
   providers: [],
   bootstrap: [AppComponent]

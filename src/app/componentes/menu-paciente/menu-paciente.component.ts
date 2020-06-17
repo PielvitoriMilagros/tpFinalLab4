@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class MenuPacienteComponent implements OnInit {
 
-  @Input() usuarioActual:Usuario;
+  @Input() usuarioActual: Usuario;
 
 
   constructor(private router: Router) { }
@@ -17,8 +17,12 @@ export class MenuPacienteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  solicitarTurno(){
+  solicitarTurno() {
     this.router.navigate(['/Turnos/Solicitud']);
+  }
+
+  verTurnos() {
+    this.router.navigate(['Listados/Turnos']);
   }
 
 }

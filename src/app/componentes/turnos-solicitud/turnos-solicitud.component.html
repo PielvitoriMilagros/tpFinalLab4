@@ -14,7 +14,7 @@
                         <div class="card-header" style="text-align: center;">
                             <div class="col-xs-11 h3">Solicitud de turnos</div>
                         </div>
-                        <div class="card-body">
+                        <div *ngIf="!turnoEmitido" class="card-body">
 
                             <form [formGroup]="formTurno">
 
@@ -59,7 +59,7 @@
                                         class="col-md-4 col-form-label text-md-right">Profesionales: </label>
                                     <div class="col-md-6">
 
-                                        <select class="selectpicker" required id="profesionales">
+                                        <select class="selectpicker" required id="profesionales" (change)="cambiaProfesionales($event)">
                                             <option [value]=item *ngFor="let item of listaProfesionales; let i=index">
                                                 {{item.apellido}}</option>
                                         </select>
@@ -70,10 +70,31 @@
                                 <div class="form-group row">
 
                                     <div class="col-md-6 offset-md-4">
-                                        <h2><button class="btn-success btn-sm">Buscar</button></h2>
+                                        <h2><button class="btn-success btn-sm" (click)="realizarFiltro()">Buscar</button></h2>
                                     </div>
 
                                 </div>
+
+
+                                <div *ngIf="encontroTurno">
+                                    <app-tabla-profesional 
+                                        [listadoRecibido]="this.listProfByEsp"
+                                        (profesionalParaTurno)="recibirProfesional($event)"></app-tabla-profesional>
+
+
+                                        <div *ngIf="profesionalElegido">
+                                            <app-turnos-tabla
+                                                [profesionalRecibido]="this.profesionalElegido"
+                                                [pacienteRecibido]="this.paciente"
+                                                (turnoListo)="recibirTurno($event)"></app-turnos-tabla>
+
+                                        </div>
+                                </div>
+
+                                <div *ngIf="encontroTurno==false">
+                                    No hay turnos para la opción seleccionada
+                                </div>
+
 
 
                             </form>
@@ -89,6 +110,24 @@
 
 
                         </div>
+
+                        <div *ngIf="turnoEmitido" class="card-body">
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                      <img src="../../../assets/images/okey.png" class="card-img" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="card-body">
+                                        <h5 class="card-text">El turno solicitado fue dado de alta correctamente!</h5>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>

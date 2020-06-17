@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FirebaseStorageService } from 'src/app/servicios/firebase-storage.service';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
@@ -11,7 +11,7 @@ import { auth } from 'firebase';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  styleUrls: ['./registro.component.css'],
 })
 export class RegistroComponent implements OnInit {
 
@@ -21,6 +21,7 @@ export class RegistroComponent implements OnInit {
 
   public listaEspecialidades: Especialidad[] = [];
   public listaDias: string[] = [];
+  public estado=false;
   public listado = [];
   public URLPublicaUno;
   public URLPublicaDos;
@@ -43,6 +44,11 @@ export class RegistroComponent implements OnInit {
       password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     })
 
+  }
+
+
+  resolved(captchaResponse: string, res) {
+    console.log(`Resolved response token: ${captchaResponse}`);
   }
 
 
@@ -83,7 +89,7 @@ export class RegistroComponent implements OnInit {
             // SUBIR USUARIOS
 
             if (this.tipoDeUsuario == "Profesional") {
-              this.usuario = new Usuario(this.formRegistro.value.nombre, this.formRegistro.value.apellido, this.formRegistro.value.nacimiento, this.formRegistro.value.email, this.formRegistro.value.password, this.URLPublicaUno, this.URLPublicaDos, this.tipoDeUsuario, this.listaEspecialidades, false,this.listaDias);
+              this.usuario = new Usuario(this.formRegistro.value.nombre, this.formRegistro.value.apellido, this.formRegistro.value.nacimiento, this.formRegistro.value.email, this.formRegistro.value.password, this.URLPublicaUno, this.URLPublicaDos, this.tipoDeUsuario, this.listaEspecialidades,this.estado,this.listaDias);
             } else {
               this.usuario = new Usuario(this.formRegistro.value.nombre, this.formRegistro.value.apellido, this.formRegistro.value.nacimiento, this.formRegistro.value.email, this.formRegistro.value.password, this.URLPublicaUno, this.URLPublicaDos, this.tipoDeUsuario);
             }

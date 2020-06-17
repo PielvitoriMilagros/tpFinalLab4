@@ -1,0 +1,61 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Foto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Especialidades</th>
+            <th scope="col">Días que atiende</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listadoRecibido">
+            <td>
+                <img height=80px width="80" [src]="item.imagenUno" alt="">
+            </td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.apellido}}</td>
+            <td>
+                <div *ngFor="let espe of item.especialidades">
+                    <p>{{espe.descripcion}}</p>
+                </div>
+            </td>
+
+            <td>
+                <div *ngFor="let dia of item.dias">
+                    <p>{{dia}}</p>
+                </div>
+            </td>
+            
+            <td>
+                <button class="btn btn-sm btn-success" name="" id=""
+                    (click)="solicitarTurno(item)">Solicitar Turno</button>
+            </td>
+
+
+
+
+
+                <!-- <div *ngIf="item.estado!=true">
+                    <td>Inactivo</td>
+                    <td>
+                        <button class="btn btn-outline-warning btn-sm" name="" id=""
+                            (click)="activarProfesional(item)">Activar</button>
+                    </td>
+                </div>
+
+                <div *ngIf="item.estado==true">
+                    <td>Activo</td>
+                    <td>
+                        <button class="btn btn-outline-danger btn-sm"
+                            (click)="desactivarProfesional(item)">Desactivar</button>
+                    </td>
+                </div> -->
+
+
+
+
+
+        </tr>
+    </tbody>
+</table>

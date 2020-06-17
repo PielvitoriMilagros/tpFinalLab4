@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+
+<h2>Listado de turnos</h2>
+
+
+<div *ngIf="esPaciente">
+    <app-listado-turno-paciente
+        [listadoTurnos]="this.turnos"
+        (turnoCancelado)="cancelarTurnoRecibido($event)"></app-listado-turno-paciente>
+</div>
+
+<div *ngIf="esProfesional">
+    <app-listado-turno-profesional
+        [listadoTurnos]="this.turnos"></app-listado-turno-profesional>
+</div>
+

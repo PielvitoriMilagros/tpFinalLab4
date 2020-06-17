@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Especialidad</h5>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            <select class="selectpicker" required id="especialidad" (change)="selectEspecialidad($event)">
+                <option [value]=item *ngFor="let item of profesionalRecibido.especialidades; let i=index">
+                    {{item.descripcion}}</option>
+            </select>
+        </h6>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5>Día</h5>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            <input type="date" [(ngModel)]="diaSelected" class="form-control" (change)="selectDia($event)"
+                placeholder="">
+        </h6>
+    </div>
+</div>
+
+<div *ngIf="errorDia==false" class="card">
+    <div class="card-header">
+        <h5>Horario</h5>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            <select class="selectpicker" required id="horarios" (change)="selectHora($event)">
+                <option [value]=item *ngFor="let item of horarios; let i=index">
+                    {{item}}</option>
+            </select>
+        </h6>
+    </div>
+</div>
+
+<div *ngIf="errorDia==true" class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="../../../assets/images/error.png" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h4 class="card-text">No hay horarios para el dia seleccionado</h4>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div *ngIf="especialidadSelected && diaSelected && horaSelected">
+    <button class="btn btn-lg btn-success" name="" id=""
+                    (click)="confirmarTurno()">Confirmar Turno</button>
+</div>

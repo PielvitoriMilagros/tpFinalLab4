@@ -8,7 +8,8 @@
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Especialidades</th>
-            <th scope="col">Estado</th>
+            <th scope="col">Días que atiende</th>
+            <th *ngIf="usuarioActualAdmin" scope="col">Estado</th>
         </tr>
     </thead>
     <tbody>
@@ -23,8 +24,13 @@
                     <p>{{espe.descripcion}}</p>
                 </div>
             </td>
-
-            <div *ngIf="item.estado==false">
+            <td>
+                <div *ngFor="let dia of item.dias">
+                    <p>{{dia}}</p>
+                </div>
+            </td>
+<div *ngIf="usuarioActualAdmin">
+            <div *ngIf="item.estado!=true">
                 <td>Inactivo</td>
                 <td>
                     <button class="btn btn-outline-warning btn-sm" name="" id="" (click)="activarProfesional(item)">Activar</button>
@@ -37,6 +43,11 @@
                     <button class="btn btn-outline-danger btn-sm" (click)="desactivarProfesional(item)">Desactivar</button>
                 </td>
             </div>
+        </div>
+
+
+
+        
         </tr>
     </tbody>
 </table>

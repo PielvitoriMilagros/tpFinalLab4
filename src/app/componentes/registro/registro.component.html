@@ -3,9 +3,9 @@
 
 <!doctype html>
 <html lang="en">
-<head>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-</head>
+    
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <body>
 
   <main class="login-form">
@@ -115,8 +115,13 @@
               <p>{{formRegistro.valid}}</p>-->
 
 
+              
 <!-- CAPTCHA GOOGLE -->
-              <div class="g-recaptcha" data-sitekey="6Lc4WaUZAAAAAIIAlqD0ChmdMPFlaoMWT6UqvIQs"></div>
+
+<recaptcha (resolved)="resolved($event,'as')" formControlName="recaptchaReactive" 
+siteKey="6Lc4WaUZAAAAAIIAlqD0ChmdMPFlaoMWT6UqvIQs">
+
+</recaptcha>
 
 
                 <div class="form-group row">
