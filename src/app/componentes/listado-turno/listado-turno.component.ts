@@ -17,6 +17,15 @@ export class ListadoTurnoComponent implements OnInit {
   esAdmin=false;
   turnos:Turno[]=[];
 
+  atendiendo=false;
+  turnoAtender;
+
+  comentarioProfesional=null;
+  turnoConComentario;
+
+  verDetalleDelTurno=false;
+  detalleTurno;
+
   constructor(private auth:AuthentificationService, private userServ:UsuariosService, private turnoServ:TurnosService) { }
 
   ngOnInit(): void {
@@ -60,6 +69,26 @@ export class ListadoTurnoComponent implements OnInit {
 
   cancelarTurnoRecibido(e){
     this.turnoServ.cambiarEstadoTurno(e.id,"CANCELADO");
+  }
+
+  rechazarTurnoRecibido(e){
+    this.turnoServ.cambiarEstadoTurno(e.id,"RECHAZADO");
+  }
+
+  atenderTurnoRecibido(e){
+    this.turnoAtender=e;
+    this.atendiendo=true;
+  }
+
+  verComentarioProfesional(e){
+    this.turnoConComentario=e;
+    this.comentarioProfesional=true;
+
+  }
+
+  recibirDetalleTurno(e){
+    this.detalleTurno = e;
+    this.verDetalleDelTurno=true;
   }
 
 

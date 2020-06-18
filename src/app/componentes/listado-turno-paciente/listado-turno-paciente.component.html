@@ -10,7 +10,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of listadoTurnos" >
-        <td>{{item.profesional.apellido}}</td>
+        <td>{{item.profesional.apellido}}, {{item.profesional.nombre}}</td>
         <td>{{item.dia}}</td>
         <td>{{item.horario}}</td>
         <td>{{item.especialidad.descripcion}}</td>
@@ -20,7 +20,7 @@
                 <button class="btn btn-outline-danger btn-sm" name="" id="" (click)="cancelarTurno(item)">Cancelar</button>
             </td>
         </div>
-        <!-- FALTA -->
+
         <div *ngIf="item.estado=='ATENDIDO' && item.comentProfesional">
             <td>
                 <button class="btn btn-outline-primary btn-sm" name="" id="" (click)="verComentario(item)">Ver Reseña</button>

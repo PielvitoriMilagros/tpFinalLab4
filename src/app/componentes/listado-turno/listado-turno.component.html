@@ -1,16 +1,46 @@
 <app-navbar></app-navbar>
 
-<h2>Listado de turnos</h2>
-
-
-<div *ngIf="esPaciente">
-    <app-listado-turno-paciente
+<div *ngIf="!atendiendo">
+    <h2>Listado de turnos</h2>
+    
+    
+    <div *ngIf="esPaciente">
+        <app-listado-turno-paciente
         [listadoTurnos]="this.turnos"
-        (turnoCancelado)="cancelarTurnoRecibido($event)"></app-listado-turno-paciente>
-</div>
+        (turnoCancelado)="cancelarTurnoRecibido($event)"
+        (turnoConComentarioProf)="verComentarioProfesional($event)">
+        </app-listado-turno-paciente>
 
-<div *ngIf="esProfesional">
-    <app-listado-turno-profesional
-        [listadoTurnos]="this.turnos"></app-listado-turno-profesional>
-</div>
+        <div *ngIf="comentarioProfesional">
+        <app-respuesta-paciente
+        [turno]="this.turnoConComentario"></app-respuesta-paciente>
+    </div>
+    </div>
 
+    <div *ngIf="esProfesional">
+        <app-listado-turno-profesional
+        [listadoTurnos]="this.turnos"
+        (turnoRechazado)="rechazarTurnoRecibido($event)"
+        (turnoAtender)="atenderTurnoRecibido($event)"
+        (detalleTurno)="recibirDetalleTurno($event)"></app-listado-turno-profesional>
+        
+        <div *ngIf="verDetalleDelTurno">
+            <app-respuesta-paciente
+            [turno]="this.detalleTurno"></app-respuesta-paciente>
+        </div>
+    </div>
+</div>
+        <div *ngIf="atendiendo">    
+                <!-- <app-atencion
+                    [turnoParaAtender]="this.turnoAtender"
+                    (datosExtra)="recibirDatosExtra($event)"
+                    (comentario)=recibirComentario($event)
+                    ></app-atencion>
+                -->
+                <app-atencion
+                [turnoParaAtender]="this.turnoAtender"></app-atencion>
+                
+                
+            </div>
+            
+            

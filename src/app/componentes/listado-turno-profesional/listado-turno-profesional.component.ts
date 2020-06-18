@@ -9,13 +9,27 @@ import { Turno } from 'src/app/clases/turno';
 export class ListadoTurnoProfesionalComponent implements OnInit {
 
   @Input() listadoTurnos;
-  // @Output() turnoCancelado : EventEmitter<Turno> = new EventEmitter<Turno>();
-  // @Output() comentarioProfesional : EventEmitter<Turno> = new EventEmitter<Turno>();
+  @Output() turnoRechazado : EventEmitter<Turno> = new EventEmitter<Turno>();
+  @Output() turnoAtender : EventEmitter<Turno> = new EventEmitter<Turno>();
+  @Output() detalleTurno : EventEmitter<Turno> = new EventEmitter<Turno>();
 
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  rechazarTurno(item){
+    item.estado="RECHAZADO";
+    this.turnoRechazado.emit(item);
+  }
+
+  atender(item){
+    this.turnoAtender.emit(item);
+  }
+
+  verDetalle(item){
+    this.detalleTurno.emit(item);
   }
 
 }

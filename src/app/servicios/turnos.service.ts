@@ -27,6 +27,11 @@ cambiarEstadoTurno(id:string,estad:string){
   });
 }
 
+updateTurno(id:string,turno:Turno){
+  return this.http.patch(environment.firebaseConfig.databaseURL+"/turnos/"+id+".json",turno).subscribe(resp=>{
+  });
+}
+
 
 getTurnosByPaciente(email:string){
   return this.http.get(environment.firebaseConfig.databaseURL+"/turnos.json").pipe(map(resp=>{

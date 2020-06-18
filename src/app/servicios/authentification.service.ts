@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AuthentificationService {
 
-  constructor(private auth:AngularFireAuth) {
+  constructor(public auth:AngularFireAuth) {
 
 
 

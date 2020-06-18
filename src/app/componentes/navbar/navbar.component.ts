@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   usuarioActivo;
 
-  constructor(private router:Router,private authService:AuthentificationService) {
+  constructor(private router:Router,public authService:AuthentificationService) {
   }
   
   ngOnInit(): void {

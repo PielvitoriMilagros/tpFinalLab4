@@ -27,13 +27,13 @@
 <div *ngIf="usuarioActual.estado" class="row">
     <div class="col-sm-6">
         <div class="card bg-info">
-            <div class="card-body">
-                <h5 class="card-title text-white">Ver Profesionales</h5>
-                <p class="card-text">Desde este menu podrá acceder al listado de profesionales para darlos de alta.</p>
+            <div class="card-body"  (click)="verTurnos()">
+                <h5 class="card-title text-white">Ver Turnos</h5>
+                <p class="card-text">Desde este menu podrá acceder al listado de turnos con todos los datos pertinentes, simular la atención de un turno, o rechazarlo.</p>
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
+    <!-- <div class="col-sm-6">
         <div class="card bg-info">
             <div class="card-body">
                 <h5 class="card-title text-white">Registrar Administrador</h5>
@@ -41,7 +41,7 @@
                     administrador.</p>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 </div>

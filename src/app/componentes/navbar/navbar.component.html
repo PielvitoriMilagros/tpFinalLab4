@@ -1,16 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #addaff;">
-    <a class="navbar-brand" [routerLink]="['/home']">
-        <img src="../../../assets/images/loguito.png" width="40" height="40" class="d-inline-block align-top" alt="">
-      </a>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/home']">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" >Turnos OnLine</a>
-        </li>
-        <!-- <li class="nav-item dropdown">
+  <a class="navbar-brand" [routerLink]="['/home']">
+    <img src="../../../assets/images/loguito.png" width="40" height="40" class="d-inline-block align-top" alt="">
+  </a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/home']">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Turnos OnLine</a>
+      </li>
+      <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Listados
           </a>
@@ -20,18 +20,30 @@
             <a class="dropdown-item" href="#">Pacientes</a>
           </div>
         </li> -->
-      </ul>
-      <div [hidden]="usuarioActivo">
+    </ul>
+    
+    <!-- <div [hidden]="usuarioActivo">
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 mr-sm-2" [routerLink]="['/Login']" routerLinkActive="router-link-active">Ingresar</button>
-        <button class="btn btn-outline-danger my-2 my-sm-0" [routerLink]="['/Registro']" routerLinkActive="router-link-active">Registrarse</button>
+        <button class="btn btn-outline-success my-2 mr-sm-2" [routerLink]="['/Login']"
+          routerLinkActive="router-link-active">Ingresar</button>
+        <button class="btn btn-outline-danger my-2 my-sm-0" [routerLink]="['/Registro']"
+          routerLinkActive="router-link-active">Registrarse</button>
       </form>
-      </div>
-      <div *ngIf="usuarioActivo">
+    </div>
+    <div *ngIf="usuarioActivo">
       <form class="form-inline my-2 my-lg-0">
         <button class="btn btn-outline-success my-2 mr-sm-2" routerLink="/MiPerfil">Mi Perfil</button>
         <button class="btn btn-outline-danger my-2 my-sm-0" (click)="cerrarSesion()">Salir</button>
       </form>
-      </div>
-    </div>
-  </nav>
+    </div> -->
+
+    <form class="form-inline my-2 my-lg-0">
+      <button *ngIf="!(authService.auth.user | async)" class="btn btn-outline-success my-2 mr-sm-2" routerLink="/Login">Ingresar</button>
+      <button *ngIf="!(authService.auth.user | async)" class="btn btn-outline-danger my-2 my-sm-0" routerLink="/Registro">Registrarse</button>
+      <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-success my-2 mr-sm-2" routerLink="/MiPerfil">Mi Perfil</button>
+      <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-danger my-2 my-sm-0" (click)="cerrarSesion()">Salir</button>
+    </form>
+
+
+  </div>
+</nav>

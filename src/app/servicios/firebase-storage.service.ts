@@ -11,8 +11,8 @@ export class FirebaseStorageService {
   ) { }
 
   //Subir archivo
-  public subirArchivo(nombreArchivo: string, datos: any) {
-    return this.storage.upload(nombreArchivo, datos);
+  public subirArchivo(nombreArchivo: string, datos: any,meta:any) {
+    return this.storage.upload(nombreArchivo, datos,{customMetadata:meta});
   }
 
   //Link público del archivo subido

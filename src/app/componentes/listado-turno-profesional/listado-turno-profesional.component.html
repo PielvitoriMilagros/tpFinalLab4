@@ -13,21 +13,24 @@
           <td>{{item.dia}}</td>
           <td>{{item.horario}}</td>
           <td>{{item.especialidad.descripcion}}</td>
-          <td>{{item.paciente.apellido}}</td>
+          <td>{{item.paciente.apellido}}, {{item.paciente.nombre}}</td>
         <td>{{item.estado}}</td>
-        <!-- <div *ngIf="item.estado=='PENDIENTE'">
+        <div *ngIf="item.estado=='PENDIENTE'">
             <td>
-                <button class="btn btn-outline-danger btn-sm" name="" id="" (click)="cancelarTurno(item)">Cancelar</button>
+                <button class="btn btn-outline-success btn-sm" name="" id="" (click)="atender(item)">Atender</button>
             </td>
-        </div> -->
+            <td>
+                <button class="btn btn-outline-danger btn-sm" name="" id="" (click)="rechazarTurno(item)">Rechazar</button>
+            </td>
+        </div>
 
         <!-- FALTA -->
 
-        <!-- <div *ngIf="item.estado=='ATENDIDO' && item.comentProfesional">
+        <div *ngIf="item.estado=='ATENDIDO' && item.comentPaciente">
             <td>
-                <button class="btn btn-outline-primary btn-sm" name="" id="" (click)="verComentario(item)">Ver Reseña</button>
+                <button class="btn btn-outline-primary btn-sm" name="" id=""(click)="verDetalle(item)">Ver Detalle</button>
             </td>
-        </div> -->
+        </div>
 
       </tr>
     </tbody>

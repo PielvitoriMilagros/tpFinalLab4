@@ -1,0 +1,47 @@
+<h3>Historia Clinica: {{turnoParaAtender.paciente.apellido}}, {{turnoParaAtender.paciente.nombre}} - {{turnoParaAtender.especialidad.descripcion}}</h3>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Campo</th>
+            <th scope="col">Valor</th>
+            <!-- <th scope="col" style="color: green;" (click)="agregarCampo()"><i class="fa fa-plus"></i></th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of datos; let i =index">
+            <th scope="row">{{i}}</th>
+            <td><input type="text" class="form-control" name="" [(ngModel)]="item.campo" [value]="item.campo" id="">
+            </td>
+            <td><input type="text" class="form-control" name="" [(ngModel)]="item.valor" [value]="item.valor" id=""
+                    required></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <h5 for="comentProfesional" class="col-md-4 col-form-label text-md-right">Reseña:</h5>
+    <div class="col-md-6">
+        <input type="text" class="form-control" name="" [(ngModel)]="comentProfesional" [value]="comentProfesional"
+            id="" style="width:80%" required>
+    </div>
+</div>
+
+<tr style="display: flex; justify-content: flex-end;"><button class="btn btn-sm btn-outline-success"
+        (click)="agregarCampo()">Agregar nuevo campo</button></tr> <br>
+
+
+<div *ngIf="!guardado" class="form-group row">
+    <div class="col-md-6 offset-md-4">
+        <h2><button class="btn btn-success btn-lg" style="display:flex;justify-content: center;"
+                (click)="guardar()">Guardar</button></h2>
+    </div>
+</div>
+
+<div *ngIf="guardado" class="form-group row">
+    <div class="col-md-6 offset-md-4">
+        <h2><button class="btn btn-success btn-lg" style="display:flex;justify-content: center;" disabled
+                >Los datos se guardaron correctamente</button></h2>
+    </div>
+</div>

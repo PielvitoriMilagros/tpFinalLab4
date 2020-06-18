@@ -7,13 +7,15 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { ListadoProfesionalComponent } from './componentes/listado-profesional/listado-profesional.component';
 import { TurnosSolicitudComponent } from './componentes/turnos-solicitud/turnos-solicitud.component';
 import { ListadoTurnoComponent } from './componentes/listado-turno/listado-turno.component';
+import { AuthentiGuard } from './guard/authenti.guard';
 
 
 const routes: Routes = [
   {path:'home',component:HomeComponent,data:{animation: 'home'}},
   {path:'Registro',component:RegistroComponent,data:{animation: 'Registro'}},
   {path:'Login',component:LoginComponent,data:{animation: 'Login'}},
-  {path:'MiPerfil',component:PerfilComponent},
+  {path:'MiPerfil',component:PerfilComponent,canActivate:[AuthentiGuard]},
+  // {path:'MiPerfil',component:PerfilComponent,data:{animation: 'MiPerfil'},canActivate:[AuthentiGuard]},
   {path:'Listados/Profesionales',component:ListadoProfesionalComponent},
   {path:'Listados/Turnos',component:ListadoTurnoComponent},
   {path:'Turnos/Solicitud',component:TurnosSolicitudComponent},

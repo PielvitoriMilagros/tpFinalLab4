@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Usuario } from 'src/app/clases/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-profesional',
@@ -11,10 +12,14 @@ export class MenuProfesionalComponent implements OnInit {
   @Input() usuarioActual : Usuario;
 
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     
+  }
+
+  verTurnos() {
+    this.router.navigate(['Listados/Turnos']);
   }
 
 }

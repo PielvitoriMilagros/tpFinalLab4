@@ -34,6 +34,16 @@ export class RegistroComponent implements OnInit {
 
   public formRegistro: FormGroup;
 
+  public myRecaptcha:boolean=false;
+
+  onScriptLoad(){
+    console.log("Load captcha");
+  }
+
+  onScriptError(){
+    console.log("Error captcha");
+  }
+
   constructor(private authService: AuthentificationService, private firebaseStorage: FirebaseStorageService, private userService: UsuariosService) {
 
     this.formRegistro = new FormGroup({
@@ -41,7 +51,8 @@ export class RegistroComponent implements OnInit {
       apellido: new FormControl(null, Validators.required),
       nacimiento: new FormControl(null, Validators.required),
       email: new FormControl(null, Validators.email),
-      password: new FormControl(null, [Validators.required, Validators.minLength(6)])
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      recaptchaReactive: new FormControl(null,Validators.requiredTrue)
     })
 
   }
@@ -70,16 +81,20 @@ export class RegistroComponent implements OnInit {
       var referenciaUno;
       var referenciaDos;
 
+      //metadata de imagenes
+
+      let usuarioMeta={nombre:this.formRegistro.value.nombre,apellido:this.formRegistro.value.apellido,email:this.formRegistro.value.email};
 
 
-      this.firebaseStorage.subirArchivo(this.formRegistro.value.email + "_1", this.imagenUno).then(resp => {
+
+      this.firebaseStorage.subirArchivo(this.formRegistro.value.email + "_1", this.imagenUno,usuarioMeta).then(resp => {
         referenciaUno = this.firebaseStorage.linkArchivoPublic(this.formRegistro.value.email + "_1");
         referenciaUno.getDownloadURL().subscribe((URL) => {
           console.log("link publico " + URL);
           this.URLPublicaUno = URL;
         });
 
-        this.firebaseStorage.subirArchivo(this.formRegistro.value.email + "_2", this.imagenDos).then(resp => {
+        this.firebaseStorage.subirArchivo(this.formRegistro.value.email + "_2", this.imagenDos,usuarioMeta).then(resp => {
           referenciaDos = this.firebaseStorage.linkArchivoPublic(this.formRegistro.value.email + "_2");
           referenciaDos.getDownloadURL().subscribe((URL) => {
             console.log("link publico 2 " + URL);

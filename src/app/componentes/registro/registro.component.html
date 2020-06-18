@@ -57,7 +57,7 @@
                 <div class="form-group row">
                   <label for="contraseña" class="col-md-4 col-form-label text-md-right">Contraseña:</label>
                   <div class="col-md-6">
-                    <input formControlName="password" type="text" id="contraseña" class="form-control"
+                    <input formControlName="password" type="password" id="contraseña" class="form-control"
                       placeholder="Contraseña" name="contraseña" style="width:50%" />
                   </div>
                 </div>
@@ -117,12 +117,17 @@
 
               
 <!-- CAPTCHA GOOGLE -->
-
+<!-- 
 <recaptcha (resolved)="resolved($event,'as')" formControlName="recaptchaReactive" 
 siteKey="6Lc4WaUZAAAAAIIAlqD0ChmdMPFlaoMWT6UqvIQs">
 
-</recaptcha>
+</recaptcha> -->
 
+<recaptcha formControlName="recaptchaReactive"
+          [(ngModel)]="myRecaptcha"
+          (scriptLoad)="onScriptLoad()"
+          (scriptError)="onScriptError()"
+        ></recaptcha>
 
                 <div class="form-group row">
 

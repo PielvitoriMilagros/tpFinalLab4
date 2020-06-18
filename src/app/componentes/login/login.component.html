@@ -1,6 +1,112 @@
 <app-navbar></app-navbar>
 
 
+<!doctype html>
+<html lang="en">
+
+<body>
+
+    <main class="login-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header" style="text-align: center;">
+                            <div class="col-xs-11 h3">Ingreso</div>
+                        </div>
+
+                        <div *ngIf="loginListo" class="card-body">
+
+                            <form>
+
+
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">Mail:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="email" class="form-control"
+                                            placeholder="Mail" [(ngModel)]="usuario" name="email" style="width:50%" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="contraseña"
+                                        class="col-md-4 col-form-label text-md-right">Contraseña:</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="contraseña"
+                                            class="form-control" placeholder="Contraseña" [(ngModel)]="clave" name="contraseña"
+                                            style="width:50%" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+
+                                    <div [hidden]="logueando" class="col-md-6 offset-md-4">
+                                        <div class="row">
+                                        <h2><button class="btn-success btn-lg"
+                                                (click)="confirmarLogin()">Ingresar</button></h2>
+                                        <h2><button class="btn-primary btn-lg"
+                                            routerLink="/home">Cancelar</button></h2>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="logueando" class="col-md-6 offset-md-4">
+                                        <button class="btn btn-success btn-lg" type="button" disabled>
+                                            <span class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            Cargando...
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <button (click)="cargarUser('User1')" class="btn btn-warning btn-sm" style="margin: 1%;">Paciente 1</button>
+                                    <button (click)="cargarUser('User2')" class="btn btn-warning btn-sm" style="margin: 1%;">Paciente 2</button>
+                                    <button (click)="cargarUser('Prof1')" class="btn btn-info btn-sm" style="margin: 1%;">Profesional 1</button>
+                                    <button (click)="cargarUser('Prof2')" class="btn btn-info btn-sm" style="margin: 1%;">Profesional 2</button>
+                                    <button (click)="cargarUser('Prof3')" class="btn btn-info btn-sm" style="margin: 1%;">Profesional 3</button>
+                                    <button (click)="cargarUser('Admin1')" class="btn btn-danger btn-sm" style="margin: 1%;">Admin 1</button>
+                                </div>
+
+
+                            </form>
+
+
+                        </div>
+
+
+                        <div *ngIf="errorLogin" class="card mb-3" style="max-width: 640px;">
+                            <div class="row no-gutters">
+                              <div class="col-md-4">
+                                <img src="../../../assets/images/error.png" class="card-img" alt="...">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h4 class="card-text">Error en el Login!</h4>
+                                  <a href="./Principal" class="btn btn-outline-danger btn-sm">Volver</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
+
+
+
+
+<!-- <app-navbar></app-navbar>
+
+
 <body>
 
     <div *ngIf="loginListo" class="container">
@@ -44,7 +150,7 @@
 
 
                         <div style="margin-top:10px" class="form-group">
-                            <!-- Button -->
+
 
                             <div [hidden]="logueando" class="col-sm-12 controls">
                                 <a id="btn-login" (click)="confirmarLogin()" class="btn btn-success">Ingresar </a>
@@ -67,9 +173,6 @@
                                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
                                     ¿No tenés cuenta?
                                     <a href="/Registro">Registrate!</a>
-                                    <!-- <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                    Registrate!
-                                </a> -->
                                 </div>
                             </div>
                         </div>
@@ -101,4 +204,4 @@
 
 
 
-</body>
+</body> -->

@@ -47,22 +47,22 @@ export class SubirImagenComponent implements OnInit {
   }
 
   //Sube el archivo a Cloud Storage
-  public subirArchivo() {
-    console.log("LLEGA ACA");
-    let archivo = this.datosFormulario.get('archivo');
-    var referencia;
-    this.firebaseStorage.subirArchivo(this.nombreArchivo, archivo).then( resp => {
+  // public subirArchivo() {
+  //   console.log("LLEGA ACA");
+  //   let archivo = this.datosFormulario.get('archivo');
+  //   var referencia;
+  //   this.firebaseStorage.subirArchivo(this.nombreArchivo, archivo).then( resp => {
 
-    referencia = this.firebaseStorage.linkArchivoPublic(this.nombreArchivo);
+  //   referencia = this.firebaseStorage.linkArchivoPublic(this.nombreArchivo);
 
-    referencia.getDownloadURL().subscribe((URL) => {
-      console.log("link publico" + URL);
-      this.URLPublica = URL;
-    });
+  //   referencia.getDownloadURL().subscribe((URL) => {
+  //     console.log("link publico" + URL);
+  //     this.URLPublica = URL;
+  //   });
 
-    })
+  //   })
 
-  }
+  // }
 
 
 // public enviarImagen(){

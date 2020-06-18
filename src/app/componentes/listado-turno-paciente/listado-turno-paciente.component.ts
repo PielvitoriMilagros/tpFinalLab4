@@ -10,7 +10,7 @@ export class ListadoTurnoPacienteComponent implements OnInit {
 
   @Input() listadoTurnos;
   @Output() turnoCancelado : EventEmitter<Turno> = new EventEmitter<Turno>();
-  @Output() comentarioProfesional : EventEmitter<Turno> = new EventEmitter<Turno>();
+  @Output() turnoConComentarioProf : EventEmitter<Turno> = new EventEmitter<Turno>();
 
   constructor() { }
 
@@ -22,9 +22,9 @@ cancelarTurno(item){
   this.turnoCancelado.emit(item);
 }
 
-// QUEDO POR LA MITAD, NO LO RECIBE NADIE EL OUTPUT
+
 verComentario(item){
-  this.comentarioProfesional.emit(item);
+  this.turnoConComentarioProf.emit(item);
 }
 
 }

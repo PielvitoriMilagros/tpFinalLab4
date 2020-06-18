@@ -36,6 +36,8 @@ import { TablaProfesionalComponent } from './componentes/tabla-profesional/tabla
 import { ListadoTurnoComponent } from './componentes/listado-turno/listado-turno.component';
 import { ListadoTurnoPacienteComponent } from './componentes/listado-turno-paciente/listado-turno-paciente.component';
 import { ListadoTurnoProfesionalComponent } from './componentes/listado-turno-profesional/listado-turno-profesional.component';
+import { AtencionComponent } from './componentes/atencion/atencion.component';
+import { RespuestaPacienteComponent } from './componentes/respuesta-paciente/respuesta-paciente.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { ListadoTurnoProfesionalComponent } from './componentes/listado-turno-pr
     TablaProfesionalComponent,
     ListadoTurnoComponent,
     ListadoTurnoPacienteComponent,
-    ListadoTurnoProfesionalComponent
+    ListadoTurnoProfesionalComponent,
+    AtencionComponent,
+    RespuestaPacienteComponent
   ],
   imports: [
     BrowserModule,

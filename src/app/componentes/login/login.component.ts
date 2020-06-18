@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   logueando=false;
   ProgresoDeAncho:string;
 
-  public formLogin: FormGroup;
 
   clase="progress-bar progress-bar-info progress-bar-striped ";
 
@@ -31,17 +30,12 @@ export class LoginComponent implements OnInit {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
 
-      this.formLogin = new FormGroup({
-        email: new FormControl(null, Validators.email),
-        password: new FormControl(null, [Validators.required, Validators.minLength(6)])
-      })
-
   }
 
   confirmarLogin(){
 
     this.logueando=true;
-    this.authService.iniciarSesion(this.formLogin.value.email, this.formLogin.value.password).then(resp => {
+    this.authService.iniciarSesion(this.usuario, this.clave).then(resp => {
 
       this.authService.currentUser().then(resp=>{
         console.log(resp);
@@ -59,8 +53,110 @@ export class LoginComponent implements OnInit {
   }
 
 
+  cargarUser(tipo){
+    switch(tipo){
+      case 'User1':{
+        this.usuario='juli_molinari_94@hotmail.com';
+        this.clave='mica123';
+        break;
+      }
+      case 'User2':{
+        this.usuario='violebu1@gmail.com';
+        this.clave='viole123';
+        break;
+      }
+      case 'Prof1':{
+        this.usuario='miledupi@hotmail.com';
+        this.clave='qweqwe';
+        break;
+      }
+      case 'Prof2':{
+        this.usuario='milagrosp619@gmail.com';
+        this.clave='pass123';
+        break;
+      }
+      case 'Prof3':{
+        this.usuario='teconleche666@gmail.com';
+        this.clave='fran123';
+        break;
+      }
+      case 'Admin1':{
+        this.usuario='julietamolinari85@gmail.com';
+        this.clave='asdasd';
+        break;
+      }
+    }
+  }
+
+
 
   ngOnInit() {
   }
 
 }
+// import { Component, OnInit } from '@angular/core';
+// import { Subscription } from 'rxjs';
+// import { ActivatedRoute, Router } from '@angular/router';
+// import { FormGroup, Validators, FormControl } from '@angular/forms';
+// import { AuthentificationService } from 'src/app/servicios/authentification.service';
+// import { environment } from 'src/environments/environment';
+
+// @Component({
+//   selector: 'app-login',
+//   templateUrl: './login.component.html',
+//   styleUrls: ['./login.component.css']
+// })
+// export class LoginComponent implements OnInit {
+
+
+//   private subscription: Subscription;
+//   usuario = '';
+//   clave= '';
+//   errorLogin=false;
+//   loginListo=true;
+//   progreso: number;
+//   progresoMensaje="esperando..."; 
+//   logueando=false;
+//   ProgresoDeAncho:string;
+
+//   public formLogin: FormGroup;
+
+//   clase="progress-bar progress-bar-info progress-bar-striped ";
+
+//   constructor(private route: ActivatedRoute,private router: Router,private authService: AuthentificationService) {
+//       this.progreso=0;
+//       this.ProgresoDeAncho="0%";
+
+//       this.formLogin = new FormGroup({
+//         email: new FormControl(null, Validators.email),
+//         password: new FormControl(null, [Validators.required, Validators.minLength(6)])
+//       })
+
+//   }
+
+//   confirmarLogin(){
+
+//     this.logueando=true;
+//     this.authService.iniciarSesion(this.formLogin.value.email, this.formLogin.value.password).then(resp => {
+
+//       this.authService.currentUser().then(resp=>{
+//         console.log(resp);
+//       })
+
+
+//       this.router.navigate(['/home']);
+
+//     }).catch(error =>{
+//       this.loginListo=false;
+//       this.errorLogin=true;
+//     });
+
+
+//   }
+
+
+
+//   ngOnInit() {
+//   }
+
+// }

@@ -40,7 +40,6 @@ export class TurnosTablaComponent implements OnInit {
 
     this.turnoNuevo = new Turno(this.pacienteRecibido, this.profesionalRecibido, this.diaSelected, this.horaSelected, this.especialidadSelected, "PENDIENTE");
     this.turnoServ.altaTurno(this.turnoNuevo).subscribe((resp: any) => {
-      console.log("turno de alta");
       this.turnoListo.emit(true);
     });
 

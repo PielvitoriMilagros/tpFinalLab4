@@ -10,12 +10,12 @@ export class Turno {
     horario: string;
     especialidad: Especialidad;
     estado: string;
-    datosExtra: [];
+    datosExtra: any;
     comentProfesional: string;
     comentPaciente: string;
 
 
-    constructor(paciente: Usuario, profesional: Usuario, dia: Date, horario: string, especialidad: Especialidad, estado: string, datosExtra?: [], comentProfesional?: string, comentPaciente?: string, id?: string) {
+    constructor(paciente: Usuario, profesional: Usuario, dia: Date, horario: string, especialidad: Especialidad, estado: string, datosExtra?: any, comentProfesional?: string, comentPaciente?: string, id?: string) {
         if (id) this.id = id;
         if (paciente) this.paciente = paciente;
         if (profesional) this.profesional = profesional;
