@@ -13,7 +13,7 @@ export class LogService {
 
   constructor(private firebaseUsuarios:AngularFireDatabase, private http:HttpClient) {
 
-    this.listaLogs= firebaseUsuarios.object('usuarios').valueChanges().pipe(map(datos=>{return this.objecToArray(datos)}));
+    this.listaLogs= firebaseUsuarios.object('logUsuarios').valueChanges().pipe(map(datos=>{return this.objecToArray(datos)}));
     
    }
 

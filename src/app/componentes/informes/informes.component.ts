@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LogService } from 'src/app/servicios/log.service';
 
 @Component({
   selector: 'app-informes',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InformesComponent implements OnInit {
 
-  constructor() { }
+  listaLog;
+
+  constructor(private logServ:LogService) { 
+
+    logServ.getLogs().subscribe(resp => {
+      this.listaLog = resp;
+    });
+
+  }
 
   ngOnInit(): void {
   }
