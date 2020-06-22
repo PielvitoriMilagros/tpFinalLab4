@@ -41,6 +41,7 @@ import { RespuestaPacienteComponent } from './componentes/respuesta-paciente/res
 import { DisplayTurnoComponent } from './componentes/display-turno/display-turno.component';
 import { BusquedaTurnoComponent } from './componentes/busqueda-turno/busqueda-turno.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { InformesComponent } from './componentes/informes/informes.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     RespuestaPacienteComponent,
     DisplayTurnoComponent,
     BusquedaTurnoComponent,
-    FilterPipe
+    FilterPipe,
+    InformesComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { TurnosSolicitudComponent } from './componentes/turnos-solicitud/turnos-
 import { ListadoTurnoComponent } from './componentes/listado-turno/listado-turno.component';
 import { AuthentiGuard } from './guard/authenti.guard';
 import { BusquedaTurnoComponent } from './componentes/busqueda-turno/busqueda-turno.component';
+import { InformesComponent } from './componentes/informes/informes.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'Listados/Turnos',component:ListadoTurnoComponent},
   {path:'Turnos/Solicitud',component:TurnosSolicitudComponent},
   {path:'Busqueda/Turnos',component:BusquedaTurnoComponent},
+  {path:'Informes',component:InformesComponent},
   {path:'**', pathMatch:'full' ,redirectTo:'home'},
   
   // {path: 'Registro' ,

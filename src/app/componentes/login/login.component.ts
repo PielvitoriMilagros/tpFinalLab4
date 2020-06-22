@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthentificationService } from 'src/app/servicios/authentification.service';
 import { environment } from 'src/environments/environment';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
+import { LogService } from 'src/app/servicios/log.service';
 
 @Component({
   selector: 'app-login',
@@ -23,10 +25,12 @@ export class LoginComponent implements OnInit {
   logueando=false;
   ProgresoDeAncho:string;
 
+  userLogin;
+
 
   clase="progress-bar progress-bar-info progress-bar-striped ";
 
-  constructor(private route: ActivatedRoute,private router: Router,private authService: AuthentificationService) {
+  constructor(private route: ActivatedRoute,private router: Router,private authService: AuthentificationService,private userServ:UsuariosService,private logServ:LogService) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
 
@@ -38,9 +42,32 @@ export class LoginComponent implements OnInit {
     this.authService.iniciarSesion(this.usuario, this.clave).then(resp => {
 
       this.authService.currentUser().then(resp=>{
-        console.log(resp);
+        // console.log(resp);
+      
+
+      this.userServ.getUsuarioByEmail(this.usuario).subscribe(res =>{
+        this.userLogin=res;
+
+        if(this.userLogin.tipoDeUsuario=='Profesional'){
+          let diaInfo = new Date();
+          let mes = diaInfo.getMonth();
+          mes = mes +1;
+          let diaA = diaInfo.getDate() + '/' + mes + '/' + diaInfo.getFullYear();
+          let horaA = diaInfo.getHours() + ':' + diaInfo.getMinutes();
+          let log={profesional:this.userLogin,dia:diaA,hora:horaA};
+
+          this.logServ.altaLog(log).subscribe((logProf: any) => {
+            
+            console.log("Registro LISTO");
+
+          });
+
+        }
+
+
       })
 
+    });
 
       this.router.navigate(['/home']);
 
@@ -94,69 +121,6 @@ export class LoginComponent implements OnInit {
   }
 
 }
-// import { Component, OnInit } from '@angular/core';
-// import { Subscription } from 'rxjs';
-// import { ActivatedRoute, Router } from '@angular/router';
-// import { FormGroup, Validators, FormControl } from '@angular/forms';
-// import { AuthentificationService } from 'src/app/servicios/authentification.service';
-// import { environment } from 'src/environments/environment';
-
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.css']
-// })
-// export class LoginComponent implements OnInit {
-
-
-//   private subscription: Subscription;
-//   usuario = '';
-//   clave= '';
-//   errorLogin=false;
-//   loginListo=true;
-//   progreso: number;
-//   progresoMensaje="esperando..."; 
-//   logueando=false;
-//   ProgresoDeAncho:string;
-
-//   public formLogin: FormGroup;
-
-//   clase="progress-bar progress-bar-info progress-bar-striped ";
-
-//   constructor(private route: ActivatedRoute,private router: Router,private authService: AuthentificationService) {
-//       this.progreso=0;
-//       this.ProgresoDeAncho="0%";
-
-//       this.formLogin = new FormGroup({
-//         email: new FormControl(null, Validators.email),
-//         password: new FormControl(null, [Validators.required, Validators.minLength(6)])
-//       })
-
-//   }
-
-//   confirmarLogin(){
-
-//     this.logueando=true;
-//     this.authService.iniciarSesion(this.formLogin.value.email, this.formLogin.value.password).then(resp => {
-
-//       this.authService.currentUser().then(resp=>{
-//         console.log(resp);
-//       })
-
-
-//       this.router.navigate(['/home']);
-
-//     }).catch(error =>{
-//       this.loginListo=false;
-//       this.errorLogin=true;
-//     });
-
-
-//   }
 
 
 
-//   ngOnInit() {
-//   }
-
-// }

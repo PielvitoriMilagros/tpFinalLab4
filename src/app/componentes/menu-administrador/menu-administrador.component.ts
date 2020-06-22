@@ -22,6 +22,10 @@ export class MenuAdministradorComponent implements OnInit {
   registrarAdmin(){
     this.router.navigate(['/Registro']);
   }
+  
+  aInformes(){
+    this.router.navigate(['/Informes']);
+  }
 
 
 }
