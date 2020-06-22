@@ -22,4 +22,8 @@ export class MenuProfesionalComponent implements OnInit {
     this.router.navigate(['Listados/Turnos']);
   }
 
+  buscarTurnos() {
+    this.router.navigate(['Busqueda/Turnos']);
+  }
+
 }

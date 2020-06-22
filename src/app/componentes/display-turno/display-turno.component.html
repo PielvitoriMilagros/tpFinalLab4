@@ -1,0 +1,45 @@
+<div class="card mb-3" style="max-width: 840px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img *ngIf="profesional" [src]="profesional.imagenUno" alt="" style="width: 100%;">
+      <img *ngIf="paciente" [src]="paciente.imagenUno" alt="" style="width: 100%;">
+    </div>
+    <div class="col-md-8">
+      
+      <div *ngIf="profesional" class="card-body">
+        <h5 class="card-title">Detalle Profesional</h5>
+        <p class="card-text"><strong>Nombre:</strong> {{profesional.nombre}}</p>
+        <p class="card-text"><strong> Apellido:</strong> {{profesional.apellido}}</p>
+        <p class="card-text"><strong> Email:</strong> {{profesional.email}}</p>
+        <p *ngIf="profesional" class="card-text"><strong> Especialidad:</strong> {{profesional.especialidad}}</p>
+        <div *ngFor="let dia of profesional.dias">
+          <p class="card-text"> Trabaja los {{dia}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="paciente" class="card-body">
+        <h5 class="card-title">Detalle Paciente</h5>
+        <p class="card-text"><strong> Nombre:</strong> {{paciente.nombre}}</p>
+        <p class="card-text"><strong> Apellido:</strong> {{paciente.apellido}}</p>
+        <p class="card-text"><strong> Email:</strong> {{paciente.email}}</p>
+      </div>
+
+
+      <div *ngIf="historia" class="card-body">
+        <h5 class="card-title">Historia Clínica</h5>
+        <div *ngFor="let item of historia">
+          <p class="card-text"><strong>{{item.campo}}: </strong>{{item.valor}}</p>
+        </div>
+      </div>
+
+
+      <div *ngIf="encuesta" class="card-body">
+        <h5 class="card-title">Encuesta Satisfacción</h5>
+        <div *ngFor="let item of encuesta">
+          <p class="card-text"><strong>{{item.campo}}: </strong>{{item.valor}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

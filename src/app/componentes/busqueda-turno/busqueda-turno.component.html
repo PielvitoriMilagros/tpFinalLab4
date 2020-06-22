@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+
+<div class="container">
+    <h2>Búsqueda de turnos</h2>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control" name="filterTurno" placeholder="Search..." [(ngModel)]="filterTurno">
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+
+                    <tr>
+                        <th scope="col">Profesional</th>
+                        <th scope="col">Paciente</th>
+                        <th scope="col">Día</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Especialidad</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Reseña</th>
+                        <!-- <th scope="col">Encuesta</th> -->
+                        <th scope="col" class="text-center">Opciones</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of listadoTurnos | filter:filterTurno">
+                        <td>{{item.profesional.apellido}}, {{item.profesional.nombre}}</td>
+                        <td>{{item.paciente.apellido}}, {{item.paciente.nombre}}</td>
+                        <td>{{item.dia}}</td>
+                        <td>{{item.horario}}</td>
+                        <td>{{item.especialidad.descripcion}}</td>
+                        <td>{{item.estado}}</td>
+                        <td *ngIf="item.comentProfesional">{{item.comentProfesional}}</td>
+                        <!-- <td *ngIf="item.comentPaciente">{{item.comentPaciente}}</td> -->
+                        <td *ngIf="!item.comentProfesional"></td>
+                        <!-- <td *ngIf="!item.comentPaciente"></td> -->
+
+                        <div style="align-content: center;">
+                            <td><button class="btn btn-outline-warning btn-sm" (click)="verDetalle('profesional',item)">Ver Profesional</button></td>
+                            <td><button class="btn btn-outline-info btn-sm" (click)="verDetalle('paciente',item)">Ver Paciente</button></td>
+                            <td><button *ngIf="item.estado=='ATENDIDO'" class="btn btn-outline-success btn-sm" (click)="verDetalle('historia',item)">Historia Clínica</button></td>
+                            <td><button *ngIf="item.comentPaciente" class="btn btn-outline-danger btn-sm" (click)="verDetalle('encuesta',item)">Ver Encuesta</button></td>
+                        </div>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div *ngIf="verProfesional || verPaciente || verHistoria || verEncuesta">
+    <app-display-turno [profesional]="this.profesional"
+                    [paciente]="this.paciente"
+                    [historia]="this.historia"
+                    [encuesta]="this.encuesta"></app-display-turno>
+                </div>
+
+</div>

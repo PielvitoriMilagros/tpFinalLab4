@@ -14,7 +14,7 @@ export class TurnosService {
 
   constructor(private firebaseTurnos:AngularFireDatabase, private http:HttpClient) { 
 
-    this.listaTurnos= firebaseTurnos.object('usuarios').valueChanges().pipe(map(datos=>{return this.objecToArray(datos)}));
+    this.listaTurnos= firebaseTurnos.object('turnos').valueChanges().pipe(map(datos=>{return this.objecToArray(datos)}));
   
   }
 
@@ -32,6 +32,9 @@ updateTurno(id:string,turno:Turno){
   });
 }
 
+getTurnos(){
+  return this.listaTurnos;
+}
 
 getTurnosByPaciente(email:string){
   return this.http.get(environment.firebaseConfig.databaseURL+"/turnos.json").pipe(map(resp=>{

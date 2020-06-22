@@ -38,6 +38,9 @@ import { ListadoTurnoPacienteComponent } from './componentes/listado-turno-pacie
 import { ListadoTurnoProfesionalComponent } from './componentes/listado-turno-profesional/listado-turno-profesional.component';
 import { AtencionComponent } from './componentes/atencion/atencion.component';
 import { RespuestaPacienteComponent } from './componentes/respuesta-paciente/respuesta-paciente.component';
+import { DisplayTurnoComponent } from './componentes/display-turno/display-turno.component';
+import { BusquedaTurnoComponent } from './componentes/busqueda-turno/busqueda-turno.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { RespuestaPacienteComponent } from './componentes/respuesta-paciente/res
     ListadoTurnoPacienteComponent,
     ListadoTurnoProfesionalComponent,
     AtencionComponent,
-    RespuestaPacienteComponent
+    RespuestaPacienteComponent,
+    DisplayTurnoComponent,
+    BusquedaTurnoComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

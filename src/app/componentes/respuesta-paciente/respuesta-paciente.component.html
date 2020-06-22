@@ -1,28 +1,62 @@
 <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">Paciente</th>
-        <th scope="col">Profesional</th>
-        <th scope="col">Especialidad</th>
-        <th scope="col">Comentario</th>
-        <th *ngIf="turno.comentPaciente" scope="col">Respuesta</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{turno.paciente.apellido}}, {{turno.paciente.nombre}}</td>
-        <td>{{turno.profesional.apellido}}, {{turno.profesional.nombre}}</td>
-        <td>{{turno.especialidad.descripcion}}</td>
-        <td>{{turno.comentProfesional}}</td>
-        <td *ngIf="turno.comentPaciente">{{turno.comentPaciente}}</td>
-        <td *ngIf="!turno.comentPaciente">
-            <button class="btn btn-outline-success btn-sm" name="" id="" (click)="responder(turno)">Responder</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Paciente</th>
+      <th scope="col">Profesional</th>
+      <th scope="col">Especialidad</th>
+      <th scope="col">Comentario</th>
+      <th *ngIf="turno.comentPaciente" scope="col">Respuesta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{turno.paciente.apellido}}, {{turno.paciente.nombre}}</td>
+      <td>{{turno.profesional.apellido}}, {{turno.profesional.nombre}}</td>
+      <td>{{turno.especialidad.descripcion}}</td>
+      <td>{{turno.comentProfesional}}</td>
 
-<div *ngIf="responde">
+      <div *ngIf="turno.comentPaciente">
+        <div *ngFor="let resp of turno.comentPaciente">
+          <td>{{resp.campo}} - <strong> {{resp.valor}} </strong> </td>
+
+        </div>
+
+      </div>
+      <!-- <td *ngIf="turno.comentPaciente">{{turno.comentPaciente}}</td> -->
+      <td *ngIf="!turno.comentPaciente">
+        <button class="btn btn-outline-success btn-sm" name="" id="" (click)="responder(turno)">Responder Encuesta
+          Satisfacción</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div *ngIf="responde" class="container">
+  <div class="form-group row">
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let item of respuesta; let i =index">
+          <th scope="row">{{i}}</th>
+          <td><input type="text" class="form-control" name="" [(ngModel)]="item.campo" [value]="item.campo" id=""
+              disabled>
+          </td>
+          <td><input type="text" class="form-control" name="" [(ngModel)]="item.valor" [value]="item.valor" id=""
+              required></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-6 offset-md-4">
+      <h2><button class="btn btn-success btn-lg" style="display:flex;justify-content: center;"
+          (click)="guardar()">Guardar</button></h2>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="responde">
     <div class="row">
         <h5 for="comentProfesional" class="col-md-4 col-form-label text-md-right">Respuesta:</h5>
         <div class="col-md-6">
@@ -36,4 +70,4 @@
                     (click)="guardar()">Guardar</button></h2>
         </div>
     </div>
-</div>
+</div> -->
