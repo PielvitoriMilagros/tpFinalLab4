@@ -27,5 +27,8 @@ export class MenuAdministradorComponent implements OnInit {
     this.router.navigate(['/Informes']);
   }
 
+  buscarTurnos() {
+    this.router.navigate(['Busqueda/Turnos']);
+  }
 
 }

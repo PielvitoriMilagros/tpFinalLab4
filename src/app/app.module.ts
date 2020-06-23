@@ -42,6 +42,7 @@ import { DisplayTurnoComponent } from './componentes/display-turno/display-turno
 import { BusquedaTurnoComponent } from './componentes/busqueda-turno/busqueda-turno.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { InformesComponent } from './componentes/informes/informes.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { InformesComponent } from './componentes/informes/informes.component';
     FormsModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
+    ChartsModule,
     RecaptchaModule.forRoot({
       siteKey: '6Lc4WaUZAAAAAIIAlqD0ChmdMPFlaoMWT6UqvIQs',
   }),

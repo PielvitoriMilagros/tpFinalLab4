@@ -4,100 +4,148 @@
 <div class="container">
     <h2 style="margin: 1%;">Informes</h2>
 
-<div class="accordion" id="accordionExample">
-    <div class="card">
-      <div class="card-header" id="headingOne">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Ingreso de los Profesionales
-          </button>
-        </h2>
-      </div>
-      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
-          
-            <table class="table table-sm">
-                <thead>
-                  <tr>
-                    <th scope="col">Profesional</th>
-                    <th scope="col">Día Ingreso</th>
-                    <th scope="col">Hora Ingreso</th>
-                    <button class="btn btn-sm btn-outline-success" (click)="ExportTOExcel()">Exportar a Excel</button>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let prof of listaLog">
-                    <td>{{prof.profesional.apellido}}, {{prof.profesional.nombre}}</td>
-                    <td>{{prof.dia}}</td>
-                    <td>{{prof.hora}}</td>
-                  </tr>
-                </tbody>
-              </table>
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Ingreso de los Profesionales
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
 
-        </div>
-      </div>
-    </div>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">Profesional</th>
+                                <th scope="col">Día Ingreso</th>
+                                <th scope="col">Hora Ingreso</th>
+                                <button class="btn btn-sm btn-outline-success" (click)="ExportTOExcel()">Exportar a
+                                    Excel</button>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let prof of listaLog">
+                                <td>{{prof.profesional.apellido}}, {{prof.profesional.nombre}}</td>
+                                <td>{{prof.dia}}</td>
+                                <td>{{prof.hora}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-    <div class="card">
-      <div class="card-header" id="headingTwo">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Turnos por especialidad
-          </button>
-        </h2>
-      </div>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="card-header" id="headingThree">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Turnos por día de la semana
-          </button>
-        </h2>
-      </div>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Turnos por especialidad
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div *ngIf="grTwoListo">
+                    <div class="card-body">
+                        <canvas baseChart 
+                        [datasets]="grTwoData" 
+                        [labels]="grTwoLabels"
+                        [options]="grTwoOptions"
+                        [plugins]="grTwoPlugins"
+                        [legend]="grTwoLegend" 
+                        [chartType]="grTwoType">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="card-header" id="headingFour">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-            Médicos por cantidad de turnos
-          </button>
-        </h2>
-      </div>
-      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-      </div>
-    </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Turnos por día de la semana
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
 
-    <div class="card">
-      <div class="card-header" id="headingFive">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-            Médicos por cantidad de días
-          </button>
-        </h2>
-      </div>
-      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <!-- <div class="chartjs-container">
+                <canvas baseChart 
+                [datasets]="grThreeData" 
+                [labels]="grThreeLabels" 
+                [options]="grThreeOptions"
+                [plugins]="grThreePlugins" 
+                [legend]="grThreeLegend" 
+                [chartType]="grThreeType">
+            </canvas> 
+            </div> -->
+
+
+
+
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Médicos por cantidad de turnos
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div *ngIf="grFourListo">
+                        <div class="chartjs-container">
+                            <canvas baseChart 
+                            [data]="grFourData" 
+                            [labels]="grFourLabels" 
+                            [chartType]="grFourType">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Médicos por cantidad de días
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                <div class="card-body">
+
+<div *ngIf="grFiveListo">
+
+    <div class="chartjs-container">
+        <canvas baseChart 
+        [data]="grFiveData" 
+        [labels]="grFiveLabels" 
+        [chartType]="grFiveType">
+        </canvas>
     </div>
-  </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
