@@ -143,37 +143,47 @@ export class InformesComponent implements OnInit {
 
 
   getTurnosPorDia(){
-  //   let labels:string[]=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
-  //   let lblAux:number[]=[0,1,2,3,4,5,6];
-  //   let cantidades=[];
-  //   let d:Date;
-  //   let diaSemana;
+    let labels:string[]=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+    let lblAux:number[]=[1,2,3,4,5,6,0];
+    let cantidades=[];
+    let d:Date;
+    let diaSemana;
 
-  //    this.grThreeOptions={
-  //    responsive: true,
-  //    scales: { xAxes: [{}], yAxes: [{}] },
-  //  };
-  //  this.grThreeType = 'bar'
-  //  this.grThreeLegend=true;
-  //  this.grThreePlugins=[];
+     this.grThreeOptions={
+     responsive: true,
+     scales: { xAxes: [{}], yAxes: [{}] },
+   };
+   this.grThreeType = 'bar'
+   this.grThreeLegend=true;
+   this.grThreePlugins=[];
 
 
-  //  lblAux.forEach(element => {
-  //    let cantidad=0;
-  //    this.listaTurnos.forEach(turno => {
-  //      console.log(d);
-  //      d = turno.dia;
-  //      console.log(d);
-  //      diaSemana=d.getDay();
-  //      if(element == diaSemana){
-  //        cantidad++;
-  //      }
-  //    });
-  //    cantidades.push(cantidad);
-  //  });
+   lblAux.forEach(element => {
+     let cantidad=0;
+     this.listaTurnos.forEach(turno => {
 
-  //  this.grThreeLabels=labels;
-  //  this.grThreeData=[{data:cantidades,label:'Cantidad de Turnos'}];
+      let dia = turno.dia.substring(8,10);
+      let mes = turno.dia.substring(5,7);
+      let aaaa = turno.dia.substring(0,4);
+      mes=mes-1;
+
+      d= new Date(aaaa,mes,dia);
+
+       diaSemana=d.getDay();
+       console.log(d);
+       console.log(diaSemana);
+       console.log(element);
+       if(element == diaSemana){
+         cantidad++;
+       }
+     });
+     cantidades.push(cantidad);
+   });
+
+   this.grThreeLabels=labels;
+   this.grThreeData=[{data:cantidades,label:'Cantidad de Turnos'}];
+
+   this.grThreeListo=true;
 
   }
 

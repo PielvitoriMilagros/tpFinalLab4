@@ -75,22 +75,22 @@
                 </h2>
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-
-                    <!-- <div class="chartjs-container">
-                <canvas baseChart 
-                [datasets]="grThreeData" 
-                [labels]="grThreeLabels" 
-                [options]="grThreeOptions"
-                [plugins]="grThreePlugins" 
-                [legend]="grThreeLegend" 
-                [chartType]="grThreeType">
-            </canvas> 
-            </div> -->
-
-
-
-
+                <div *ngIf="grThreeListo">
+                    <div class="card-body">
+                        <div class="chartjs-container">
+                            <canvas baseChart 
+                            [datasets]="grThreeData" 
+                            [labels]="grThreeLabels" 
+                            [options]="grThreeOptions"
+                            [plugins]="grThreePlugins" 
+                            [legend]="grThreeLegend" 
+                            [chartType]="grThreeType">
+                            </canvas>
+                        </div>
+        
+                    </div>
+        
+        
                 </div>
             </div>
         </div>
