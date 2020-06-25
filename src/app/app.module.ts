@@ -43,6 +43,7 @@ import { BusquedaTurnoComponent } from './componentes/busqueda-turno/busqueda-tu
 import { FilterPipe } from './pipes/filter.pipe';
 import { InformesComponent } from './componentes/informes/informes.component';
 import { ChartsModule } from 'ng2-charts';
+import { MiDirectivaDirective } from './mi-directiva.directive';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { ChartsModule } from 'ng2-charts';
     DisplayTurnoComponent,
     BusquedaTurnoComponent,
     FilterPipe,
-    InformesComponent
+    InformesComponent,
+    MiDirectivaDirective
   ],
   imports: [
     BrowserModule,

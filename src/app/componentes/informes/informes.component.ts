@@ -7,6 +7,7 @@ import { Especialidad } from 'src/app/clases/especialidad';
 import { EspecialidadesService } from 'src/app/servicios/especialidades.service';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, MultiDataSet } from 'ng2-charts';
+// import { CHART_DIRECTIVES } from 'ng2-charts/ng2-charts';
 
 
 @Component({
@@ -48,33 +49,6 @@ export class InformesComponent implements OnInit {
   grFiveLabels:Label[];
   grFiveData:MultiDataSet;
   grFiveType:ChartType;
-  // grFiveOptions:ChartOptions;
-  // grFiveLabels:Label[];
-  // grFiveType:ChartType;
-  // grFiveLegend;
-  // grFivePlugins;
-  // grFiveData:ChartDataSets[];
-
-  // doughnutChartLabels: Label[] = ['PUBG', 'Call of Duty', 'Fortnite'];
-  // doughnutChartData: MultiDataSet = [
-  //   [53, 30, 17]
-  // ];
-  // doughnutChartType: ChartType = 'doughnut';
-
-
-  // barChartOptions: ChartOptions = {
-  //   responsive: true,
-  //   scales: { xAxes: [{}], yAxes: [{}] },
-  // };
-  // barChartLabels: Label[] = ['2013', '2014', '2015', '2016', '2017', '2018'];
-  // barChartType: ChartType = 'bar';
-  // barChartLegend = true;
-  // barChartPlugins = [];
-
-  // barChartData: ChartDataSets[] = [
-  //   // { data: [2500, 5900, 6000, 8100, 8600, 8050, 1200], label: 'Company A' },
-  //   { data: [2800, 4800, 4000, 7900, 9600, 8870, 1400], label: 'Company B' }
-  // ];
 
   
   constructor(private logServ:LogService,private turnoServ:TurnosService,private userServ:UsuariosService, private espServ:EspecialidadesService) { 
@@ -252,6 +226,37 @@ export class InformesComponent implements OnInit {
   }
   
   
+  downloadCanvasTwo(event,fileName) {
+    var anchor = event.target;
+    fileName=fileName+'.png';
+    // get the canvas
+    anchor.href = document.getElementsByTagName('canvas')[0].toDataURL();
+    anchor.download = fileName;
+  }
+  
+  downloadCanvasThree(event,fileName) {
+    var anchor = event.target;
+    fileName=fileName+'.png';
+    // get the canvas
+    anchor.href = document.getElementsByTagName('canvas')[1].toDataURL();
+    anchor.download = fileName;
+  }
+  
+  downloadCanvasFour(event,fileName) {
+    var anchor = event.target;
+    fileName=fileName+'.png';
+    // get the canvas
+    anchor.href = document.getElementsByTagName('canvas')[2].toDataURL();
+    anchor.download = fileName;
+  }
+  
+  downloadCanvasFive(event,fileName) {
+    var anchor = event.target;
+    fileName=fileName+'.png';
+    // get the canvas
+    anchor.href = document.getElementsByTagName('canvas')[3].toDataURL();
+    anchor.download = fileName;
+  }
 
 
     ExportTOExcel() {

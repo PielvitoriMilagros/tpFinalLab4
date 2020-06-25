@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let item of listadoTurnos | filter:filterTurno">
+                    <tr *ngFor="let item of listadoTurnos | filter:filterTurno" appMiDirectiva="lemonchiffon">
                         <td>{{item.profesional.apellido}}, {{item.profesional.nombre}}</td>
                         <td>{{item.paciente.apellido}}, {{item.paciente.nombre}}</td>
                         <td>{{item.dia}}</td>

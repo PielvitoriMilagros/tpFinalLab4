@@ -25,6 +25,7 @@
                                 <th scope="col">Hora Ingreso</th>
                                 <button class="btn btn-sm btn-outline-success" (click)="ExportTOExcel()">Exportar a
                                     Excel</button>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -51,6 +52,7 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div *ngIf="grTwoListo">
+                    <a class="btn btn-sm btn-outline-danger" href="#" (click)="downloadCanvasTwo($event,'turnosPorEspecialidad')">Descargar PNG</a>
                     <div class="card-body">
                         <canvas baseChart 
                         [datasets]="grTwoData" 
@@ -76,6 +78,7 @@
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                 <div *ngIf="grThreeListo">
+                    <a class="btn btn-sm btn-outline-danger" href="#" (click)="downloadCanvasThree($event,'turnosPorDia')">Descargar PNG</a>
                     <div class="card-body">
                         <div class="chartjs-container">
                             <canvas baseChart 
@@ -106,6 +109,7 @@
             </div>
             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                 <div class="card-body">
+                    <a class="btn btn-sm btn-outline-danger" href="#" (click)="downloadCanvasFour($event,'medicosPorTurnos')">Descargar PNG</a>
                     <div *ngIf="grFourListo">
                         <div class="chartjs-container">
                             <canvas baseChart 
@@ -132,7 +136,7 @@
                 <div class="card-body">
 
 <div *ngIf="grFiveListo">
-
+    <a class="btn btn-sm btn-outline-danger" href="#" (click)="downloadCanvasFive($event,'medicosPorDias')">Descargar PNG</a>
     <div class="chartjs-container">
         <canvas baseChart 
         [data]="grFiveData" 

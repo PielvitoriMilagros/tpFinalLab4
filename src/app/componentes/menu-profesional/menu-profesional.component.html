@@ -27,7 +27,7 @@
 <div *ngIf="usuarioActual.estado" class="row">
     <div class="col-sm-6">
         <div class="card bg-info">
-            <div class="card-body"  (click)="verTurnos()">
+            <div appMiDirectiva="springgreen" class="card-body"  (click)="verTurnos()">
                 <h5 class="card-title text-white">Ver Turnos</h5>
                 <p class="card-text">Desde este menu podrá acceder al listado de turnos con todos los datos pertinentes, simular la atención de un turno, o rechazarlo.</p>
             </div>
@@ -36,7 +36,7 @@
 
     <div class="col-sm-6">
         <div class="card bg-info">
-            <div class="card-body" (click)="buscarTurnos()">
+            <div appMiDirectiva="springgreen" class="card-body" (click)="buscarTurnos()">
                 <h5 class="card-title text-white">Buscar Turnos</h5>
                 <p class="card-text">Permite realizar una búsqueda de turnos de manera dinámica, es decir selccionando libremente el campo por el cual se desea filtrar.</p>
             </div>
