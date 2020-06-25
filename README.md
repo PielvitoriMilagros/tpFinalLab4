@@ -70,3 +70,18 @@ Los profesionales pueden tener más de una especialidad.
 >Se agregó la funcionalidad de simular una atención de profesional, para poder corroborar el funcionamiento, las reseñas, los datos adicionales de la consulta, y los comentarios.
 
 ![principal](https://github.com/PielvitoriMilagros/tpFinalLab4/blob/master/multiReadMe/5atender.gif)
+
+
+
+**Búsqueda dinámica de turnos**
+>Para los profesionales se facilitó una búsqueda genérica de turnos, sin importar el estado o el paciente/profesional al que correspondan. La búsqueda es efectiva a partir del ingreso del segundo caracter, y se realiza en base a cualquiera de los datos que estén guardados en el turno, desde los del paciente, profesional, hasta los dinámicos de atención o encuesta del paciente.
+
+![principal](https://github.com/PielvitoriMilagros/tpFinalLab4/blob/master/multiReadMe/6buscar.gif)
+
+
+
+
+**Informes estadísticos descargables**
+>La última funcionalidad implementada corresponde a los informes para el Administrador. Desde su menú puede acceder a esta sección, en donde se verán los informes en modo gráfico, y se le permitirá la descarga de los mismos.
+
+![principal](https://github.com/PielvitoriMilagros/tpFinalLab4/blob/master/multiReadMe/7informes.gif)
